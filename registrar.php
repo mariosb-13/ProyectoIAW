@@ -9,13 +9,13 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
-	<title>Club Deportivo La Venta</title>
+	<title>Snkrs.Pro</title>
 </head>
 
 <body>
 	<div class="container">
 		<div class="row">
-			<h1>Socios</h1>
+			<h1>Registrar zapatilla</h1>
 		</div>
 
 		<div class="row">
@@ -38,9 +38,14 @@
 					</div>
 
 					<div class="form-group">
-						<label for="categoria">Categoria</label>
+						<label for="categoria">Marca</label>
 						<select name="categoria" id="categoria" class="form-control" required>
 							<option value="AMATEUR">AMATEUR</option>
+							<option value="PROFESIONAL">PROFESIONAL</option>
+							<option value="PROFESIONAL">PROFESIONAL</option>
+							<option value="PROFESIONAL">PROFESIONAL</option>
+							<option value="PROFESIONAL">PROFESIONAL</option>
+							<option value="PROFESIONAL">PROFESIONAL</option>
 							<option value="PROFESIONAL">PROFESIONAL</option>
 						</select>
 						<input type="hidden" name="id" value="<?php echo $fila['id'] ?>">

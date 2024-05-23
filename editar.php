@@ -4,7 +4,7 @@ require 'conexion.php';
 $id = $_GET['id'];
 
 // Se prepara y ejecuta la sentencia
-$sql = "SELECT * FROM clubDeportivo WHERE id=$id LIMIT 1";
+$sql = "SELECT * FROM zapatillas WHERE id_zapatilla=$id LIMIT 1";
 $resultado = $mysqli->query($sql);
 
 // Se extrae el registro. No se hace en bucle porque el resultado debe ser único
@@ -22,7 +22,7 @@ $fila = $resultado->fetch_assoc();
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
-	<title>Club Deportivo La Venta</title>
+	<title>Snkrs.Pro</title>
 </head>
 
 <body>
