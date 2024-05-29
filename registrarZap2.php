@@ -8,19 +8,18 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		
-		<title>Club Deportivo La Venta</title>
+		<title>Snkrs.Pro</title>
 	</head>
 	<body>
 		<?php
-			$nombre=$_POST['nombre'];
-			$telefono=$_POST['telefono'];
-			$fecha_nac=$_POST['fecha_nac'];
-			$categoria=$_POST['categoria'];
+			$Modelo=$_POST['modelo'];
+			$Marca=$_POST['marca'];
+			$Stock=$_POST['stock'];
 			
 			require 'conexion.php';
 
 			
-			$sql="INSERT INTO clubDeportivo (nombre,telefono,fecha_nacimiento,categoria) VALUES ('$nombre','$telefono','$fecha_nac','$categoria')";
+			$sql="INSERT INTO zapatillas (Modelo,Marca,Stock) VALUES ('$Modelo','$Marca','$Stock')";
 
 			$resultado = $mysqli->query($sql);
 	

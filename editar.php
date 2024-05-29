@@ -28,7 +28,6 @@ $fila = $resultado->fetch_assoc();
 <body>
 	<div class="container">
 		<div class="row">
-			<h1>Socios</h1>
 		</div>
 
 		<div class="row">
