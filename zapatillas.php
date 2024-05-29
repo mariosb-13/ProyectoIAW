@@ -33,30 +33,35 @@ $resultado = $mysqli->query($sql);
 
 </head>
 <?php
-
+$usuario = $_GET["usuario"];
 ?>
 
 <body>
-	<div class="jumbotron">
-		<h1 class="display-3">Hola $usuario</h1>
-		<p class="lead">Bienvenido a la página de administración de nuestras zapatillas.</p>
-		<hr class="my-2">
-		<p>Debera registrarse o iniciar sesión para poder acceder</p>
-		<p class="lead">
-			<a class="btn btn-primary btn-lg" href="registrarUsu.php" role="button">Registrarse</a>
-			<a class="btn btn-primary btn-lg" href="login.php" role="button">Iniciar Sesion</a>
-		</p>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<table>
+				<tr>
+					<th>
+						<p><img class="img" src="images/icono.png"></p>
+					</th>
+					<th>
+						<h1 class="display-3">Hola, <?php echo $usuario ?></h1>
+						<p class="lead">Estas son las zapatillas que tenemos en nuestra base de datos</p>
+					</th>
+
+				</tr>
+			</table>
+		</div>
 	</div>
 
+
 	<div class="container">
-		<div class="row">
-			<h1>Zapatillas</h1>
-			<!-- <h1><img class="logo" src="images/icono.png"></h1> -->
-		</div>
+
 		<br>
 		<div class="form-group">
-			<input type="submit" class="btn btn-primary" value="Registrar">
+			<?php echo "<a href='registrarZap.php?usuario=$usuario'><button>Registrar Zapatilla</button></a>" ?>
 		</div>
+
 		<br>
 		<br>
 
@@ -78,10 +83,10 @@ $resultado = $mysqli->query($sql);
 					echo "<td>$fila[Marca]</td>";
 					echo "<td>$fila[Modelo]</td>";
 					echo "<td>$fila[Stock]</td>";
-					echo "<td>$fila[Precio]</td>";
+					echo "<td>$fila[Precio]€</td>";
 
 					echo "<td><a href='editar.php?id=$fila[id_zapatilla]' class='btn btn-warning'>Editar</a></td>";
-					echo "<td><a href='eliminar.php?id=$fila[id_zapatilla]' class='btn btn-danger'>Eliminar</a></td>";
+					echo "<td><a href='eliminar.php?id=$fila[id_zapatilla]&usuario=$usuario' class='btn btn-danger'>Eliminar</a></td>";
 					echo "</tr>";
 				}
 				$mysqli->close();

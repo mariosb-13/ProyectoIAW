@@ -15,61 +15,65 @@ $fila = $resultado->fetch_assoc();
 <html lang="es">
 
 <head>
-	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+	<link rel="icon" href="images/icono.png" type="image/png">
 
-	<title>Snkrs.Pro</title>
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+
+	<title>Snkrs.Pro - Editar Zapatilla</title>
 </head>
 
 <body>
 	<div class="container">
-		<div class="row">
+	<div class="row">
+			<h1>Editar Zapatilla</h1>
 		</div>
 
 		<div class="row">
 			<div class="col-md-8">
-				<!-- Completar atributos de form -->
 				<form id="registro" name="registro" autocomplete="off" action="editar2.php" method="post">
-					<!-- Incluir el id en algún div de estos-->
-					<div class="form-group">
+				<div class="form-group">
 						<label>
-							<p>Nombre completo:</p>
-							<input type="text" name="nombre" maxlength="50" size="50" required value="<?php echo $fila['nombre'] ?>">
-						</label>
-					</div>
-
-					<div class="form-group">
-						<label>
-							<p>Teléfono:</p>
-							<input type="text" name="telefono" maxlength="50" size="50" required value="<?php echo $fila['telefono'] ?>">
-						</label>
-					</div>
-
-					<div class="form-group">
-						<label>
-							<p>Fecha nacimiento</p>
-							<input type="date" name="fecha_nac" maxlength="50" size="50" required value="<?php echo $fila['fecha_nacimiento'] ?>">
-						</label>
-					</div>
-
-					<div class="form-group">
-						<label>
-							<p>Categoria</p>
-							<select name="categoria" id="categoria" class="form-control" required>
-							<option value="AMATEUR">AMATEUR</option>
-							<option value="PROFESIONAL">PROFESIONAL</option>
+							<p>Marca:</p>
+							<select name="marca" id="marca" class="form-control" required>
+							<option value="Nike">Nike</option>
+							<option value="Adidas">Adidas</option>
+							<option value="New Balance">New Balance</option>
+							<option value="Puma">Puma</option>
+							<option value="Converse">Converse</option>
+							<option value="Vans">Vans</option>
+							<option value="Lacoste">Lacoste</option>
+							<option value="Salomon">Salomon</option>
+							<option value="Reebok">Reebok</option>
 							</select>
 						</label>
 						<input type="hidden" name="id" value="<?php echo $fila['id'] ?>">
 					</div>
+					<div class="form-group">
+						<label>
+							<p>Modelo:</p>
+							<input type="text" name="telefono" maxlength="50" size="50" required value="<?php echo $fila['modelo'] ?>">
+						</label>
+					</div>
+
+					<div class="form-group">
+						<label>
+							<p>Stock:</p>
+							<input type="number" name="fecha_nac" maxlength="50" size="50" required value="<?php echo $fila['stock'] ?>">
+						</label>
+					</div>
+
+					
 
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary" value="Editar">
-						
 					</div>
 				</form>
 			</div>

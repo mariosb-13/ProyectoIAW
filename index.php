@@ -32,8 +32,8 @@ $resultado = $mysqli->query($sql);
 
 <body>
     <div class="jumbotron">
-        <h1 class="display-3">Hola, Snkrs.Pro</h1>
-        <p class="lead">Bienvenido a la página de administración de la base de datos de nuestras zapatillas.</p>
+        <h1 class="display-3">Hola, bienvenido a Snkrs.Pro</h1>
+        <p class="lead">Esta es la página de administración de la base de datos de nuestras zapatillas.</p>
         <hr class="my-2">
         <p>Debera registrarse o iniciar sesión para poder acceder</p>
         <p class="lead">

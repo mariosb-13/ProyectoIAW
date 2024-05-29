@@ -14,34 +14,34 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
 
-	<title>Snkrs.Pro - Iniciar Sesión</title>
+    <title>Snkrs.Pro - Iniciar Sesión</title>
 </head>
 
 <body>
-    <div class="container login-container">
-        <div class="card login-card">
-            <div class="card-body">
-                <h1 class="card-title text-center">Iniciar Sesión</h1>
-                <form action="login.php" method="post">
-                    <div class="mb-3">
-                        <label for="usuario" class="form-label">Usuario</label>
-                        <input type="text" name="usuario" id="usuario" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="contrasena" class="form-label">Contraseña</label>
-                        <input type="password" name="contrasena" id="contrasena" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-success btn-custom">Iniciar sesión</button>
-                    </div>
-                    <div class="text-center">
-                        <a href="index.php" class="btn btn-danger btn-custom">Volver</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <?php
+    $usuario = $_POST['usuario'];
+    $passwd = $_POST['passwd'];
 
+    require 'conexion.php';
+
+
+    $sql = "SELECT * FROM usuarios WHERE usuario like '$usuario' AND password like '$passwd'";
+
+
+    $resultado = $mysqli->query($sql);
+
+    if ($resultado->num_rows > 0) {
+        // Usuario y contraseña correctos
+        header("Location: zapatillas.php?usuario=$usuario");
+    } else {
+        // Usuario o contraseña incorrectos
+        echo "<div class='container mt-4'>
+                <div class='alert alert-danger text-center' role='alert'>
+                    Usuario o contraseña incorrectos. <a href='login.php' class='alert-link'>Volver a intentar</a>.
+                </div>
+              </div>";
+    }
+    ?>
 </body>
 
 </html>

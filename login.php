@@ -22,14 +22,14 @@
         <div class="card login-card">
             <div class="card-body">
                 <h1 class="card-title text-center">Iniciar Sesión</h1>
-                <form action="login.php" method="post">
+                <form action="login2.php" method="post">
                     <div class="mb-3">
                         <label for="usuario" class="form-label">Usuario</label>
                         <input type="text" name="usuario" id="usuario" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="contrasena" class="form-label">Contraseña</label>
-                        <input type="password" name="contrasena" id="contrasena" class="form-control" required>
+                        <label for="passwd" class="form-label">Contraseña</label>
+                        <input type="password" name="passwd" id="passwd" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-success btn-custom">Iniciar sesión</button>
