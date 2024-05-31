@@ -19,29 +19,38 @@
 
 <body>
     <?php
+    require 'conexion.php';
+
     $usuario = $_POST['usuario'];
     $passwd = $_POST['passwd'];
 
-    require 'conexion.php';
+    // Preparar la consulta SQL para evitar inyecciones SQL
+    $sql = $mysqli->prepare("SELECT * FROM usuarios WHERE Usuario = ? AND Password = ?");
 
+    $sql->bind_param("ss", $usuario, $passwd);
+    $sql->execute();
 
-    $sql = "SELECT * FROM usuarios WHERE usuario like '$usuario' AND password like '$passwd'";
+    // Obtener los resultados de la consulta
+    $resultado = $sql->get_result();
+    $fila = $resultado->fetch_assoc();
 
-
-    $resultado = $mysqli->query($sql);
-
-    if ($resultado->num_rows > 0) {
+    if ($fila > 0) {
         // Usuario y contraseña correctos
         header("Location: zapatillas.php?usuario=$usuario");
+        exit();
     } else {
-        // Usuario o contraseña incorrectos
+        // Usuario/contraseña incorrectos
         echo "<div class='container mt-4'>
-                <div class='alert alert-danger text-center' role='alert'>
-                    Usuario o contraseña incorrectos. <a href='login.php' class='alert-link'>Volver a intentar</a>.
-                </div>
-              </div>";
+            <div class='alert alert-danger text-center' role='alert'>
+                Usuario o contraseña incorrectos. <a href='login.php' class='alert-link'>Volver a intentar</a>.
+            </div>
+          </div>";
     }
+
+    // Liberar los resultados y cerrar la declaración
+    $sql->close();
     ?>
+
 </body>
 
 </html>

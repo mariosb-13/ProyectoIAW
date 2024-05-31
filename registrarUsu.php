@@ -21,9 +21,9 @@
 		<div class="card login-card">
 			<div class="card-body">
 				<h1 class="card-title text-center">Registrar Usuario</h1>
-				<form action="login.php" method="post">
+				<form action="registrarUsu2.php" method="post">
 					<div class="mb-3">
-						<label for="nombre" class="form-label">Nombre</label>
+						<label for="nombre" class="form-label">Nombre Completo:</label>
 						<input type="text" name="nombre" id="nombre" class="form-control" required>
 					</div>
 					<div class="mb-3">
@@ -31,8 +31,8 @@
 						<input type="text" name="usuario" id="usuario" class="form-control" required>
 					</div>
 					<div class="mb-3">
-						<label for="contrasena" class="form-label">Contraseña</label>
-						<input type="password" name="contrasena" id="contrasena" class="form-control" required>
+						<label for="passwd" class="form-label">Contraseña</label>
+						<input type="password" name="passwd" id="passwd" class="form-control" required>
 					</div>
 					<div class="mb-3">
 						<button type="submit" class="btn btn-success btn-custom">Registrar</button>

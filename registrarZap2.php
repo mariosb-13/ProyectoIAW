@@ -31,9 +31,9 @@
 			$resultado = $mysqli->query($sql);
 	
 			if($resultado>0){
-				echo "<div class='alert alert-primary' role='alert'> Registro agregado </div>";
+				echo "<div class='alert alert-primary' role='alert'> Zapatilla agregada </div>";
 			}else{
-				echo "<p>Ha habido un error al agregar el registro</p>";	
+				echo "<p>Ha habido un error al agregar la zapatilla</p>";	
 			}
 			echo "<a href=zapatillas.php?usuario=$usuario><button type='button' class='btn btn-primary'>Regresar</button></a>";
 		 
