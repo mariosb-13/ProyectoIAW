@@ -9,6 +9,7 @@ $resultado = $mysqli->query($sql);
 
 // Se extrae el registro. No se hace en bucle porque el resultado debe ser único
 $fila = $resultado->fetch_assoc();
+
 ?>
 
 <!doctype html>
@@ -32,7 +33,7 @@ $fila = $resultado->fetch_assoc();
 
 <body>
 	<div class="container">
-	<div class="row">
+		<div class="row">
 			<h1>Editar Zapatilla</h1>
 		</div>
 
@@ -42,39 +43,36 @@ $fila = $resultado->fetch_assoc();
 				<div class="form-group">
 						<label>
 							<p>Marca:</p>
-							<select name="marca" id="marca" class="form-control" required>
-							<option value="Nike">Nike</option>
-							<option value="Adidas">Adidas</option>
-							<option value="New Balance">New Balance</option>
-							<option value="Puma">Puma</option>
-							<option value="Converse">Converse</option>
-							<option value="Vans">Vans</option>
-							<option value="Lacoste">Lacoste</option>
-							<option value="Salomon">Salomon</option>
-							<option value="Reebok">Reebok</option>
-							</select>
+							<input type="text" name="marca" maxlength="20" size="20" required readonly value="<?php echo $fila['Marca'] ?>">
 						</label>
-						<input type="hidden" name="id" value="<?php echo $fila['id'] ?>">
 					</div>
 					<div class="form-group">
 						<label>
 							<p>Modelo:</p>
-							<input type="text" name="telefono" maxlength="50" size="50" required value="<?php echo $fila['modelo'] ?>">
+							<input type="text" name="modelo" maxlength="50" size="50" required value="<?php echo $fila['Modelo'] ?>">
 						</label>
 					</div>
 
 					<div class="form-group">
 						<label>
 							<p>Stock:</p>
-							<input type="number" name="fecha_nac" maxlength="50" size="50" required value="<?php echo $fila['stock'] ?>">
+							<input type="number" name="stock" maxlength="10" size="10" required value="<?php echo $fila['Stock'] ?>">
 						</label>
 					</div>
 
-					
+					<div class="form-group">
+						<label>
+							<p>Precio:</p>
+							<input type="number" name="precio" maxlength="10" size="10" required value="<?php echo $fila['Precio'] ?>">
+						</label>
+					</div>
 
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary" value="Editar">
 					</div>
+
+					<input type="hidden" name="id" maxlength="10" size="10" required value="<?php echo $id ?>">
+
 				</form>
 			</div>
 		</div>

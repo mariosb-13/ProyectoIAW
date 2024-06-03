@@ -34,6 +34,13 @@ $resultado = $mysqli->query($sql);
 
 	<title>Snkrs.Pro</title>
 
+	<style>
+		/* Cuando el stock sea igual a 0 se pondra de color rojo */
+		.nostock {
+			color: red;
+		}
+	</style>
+
 	<script>
 		$(document).ready(function() {
 			$('#tabla').DataTable();
@@ -83,12 +90,15 @@ $resultado = $mysqli->query($sql);
 			<tbody>
 				<?php
 				while ($fila = $resultado->fetch_assoc()) {
-					echo "<tr>";
+					echo "<tr";
+					if ($fila['Stock'] <= 0) {
+						echo " class='nostock'";
+					}
+					echo ">";
 					echo "<td>$fila[Marca]</td>";
 					echo "<td>$fila[Modelo]</td>";
-					echo "<td>$fila[Stock]</td>";
+					echo "<td>$fila[Stock] ud.</td>";
 					echo "<td>$fila[Precio]€</td>";
-
 					echo "<td><a href='editar.php?id=$fila[id_zapatilla]' class='btn btn-warning'>Editar</a></td>";
 					echo "<td><a href='eliminar.php?id=$fila[id_zapatilla]' class='btn btn-danger'>Eliminar</a></td>";
 					echo "</tr>";
