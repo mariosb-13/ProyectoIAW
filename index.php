@@ -42,14 +42,13 @@ if (isset($_SESSION['usuario'])) {
             </p>
             <p class="lead">
                 <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Iniciar Sesión</a>
-                <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Administrar Usuarios</a>
             </p>
         <?php } ?>
 
         <?php if (isset($usuario)) { ?>
             <p class="lead">
-                <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Zapatillas</a>
-                <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Usuarios</a>
+                <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Administrar Zapatillas</a>
+                <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Administrar Usuarios</a>
             </p>
             <p class="lead">
                 <a class="btn btn-danger btn-lg" href="cerrar.php" role="button">Cerrar Sesión</a>

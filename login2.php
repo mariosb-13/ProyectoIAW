@@ -43,7 +43,7 @@
         $_SESSION['usuario'] = $usuario;
 
         // Redirigir al usuario a la página de zapatillas
-        header("Location: zapatillas.php");
+        header("Location: index.php");
         exit();
     } else {
         // Usuario/contraseña incorrectos
