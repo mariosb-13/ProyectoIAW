@@ -54,6 +54,7 @@ $resultado = $mysqli->query($sql);
 					<th>
 						<h1 class="display-3">Hola, <?php echo $usuario ?></h1>
 						<p class="lead">Estas son las zapatillas que tenemos en nuestra base de datos</p>
+						<a href="index.php"><button type="button" class="btn btn-outline-primary">Volver</button></a>
 					</th>
 				</tr>
 			</table>
@@ -62,7 +63,7 @@ $resultado = $mysqli->query($sql);
 
 	<div class="container">
 
-		<button type="button" class="btn btn-primary">Registrar Zapatilla</button>
+		<a href="registrarZap.php"><button type="button" class="btn btn-primary">Registrar Zapatilla</button></a>
 		<br><br>
 
 
