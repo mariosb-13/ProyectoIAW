@@ -37,10 +37,13 @@ $resultado = $mysqli->query($sql);
         <hr class="my-2">
         <p>Deberá registrarse o iniciar sesión para poder acceder</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="registrarUsu.php" role="button">Registrarse</a>
-            <a class="btn btn-primary btn-lg" href="login.php" role="button">Iniciar Sesión</a>
+            <a class="btn btn-success btn-lg" href="registrarUsu.php" role="button">Registrarse</a>
+            <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Iniciar Sesión</a>
+            <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Administrar Usuarios</a>
+
         </p>
-        <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Administrar Usuarios</a>
+        <a class="btn btn-danger btn-lg" href="cerrar.php" role="button">Cerrar Sesión</a>
+
     </div>
 
 
