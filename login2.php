@@ -33,29 +33,26 @@
 
     // Obtener el resultado
     $resultado = $sql->get_result();
+    $fila = $resultado->fetch_assoc();
 
-    // Verificar si se obtuvieron resultados
-    if ($resultado->num_rows > 0) {
-        $fila = $resultado->fetch_assoc();
+    if ($fila && password_verify($passwd, $fila['Password'])) {
+        // Iniciar sesión
+        session_start();
 
-        // Verificar si la fila no está vacía
-            // Verificar si la columna 'password' existe en la fila
-            if (isset($fila['Password'])) {
-                // Verificar la contraseña
-                if (password_verify($passwd, $fila['Password'])) {
-                    // Usuario y contraseña correctos
-                    header("Location: zapatillas.php?usuario=$usuario");
-                    exit();
-                }
-            }
-        }
+        // Guardar información del usuario en la sesión
+        $_SESSION['usuario'] = $usuario;
 
-    // Usuario/contraseña incorrectos
-    echo "<div class='container mt-4'>
-            <div class='alert alert-danger text-center' role='alert'>
-                Usuario o contraseña incorrectos. <a href='login.php' class='alert-link'>Volver a intentar</a>.
-            </div>
-          </div>";
+        // Redirigir al usuario a la página de zapatillas
+        header("Location: zapatillas.php");
+        exit();
+    } else {
+        // Usuario/contraseña incorrectos
+        echo "<div class='container mt-4'>
+                <div class='alert alert-danger text-center' role='alert'>
+                    Usuario o contraseña incorrectos. <a href='login.php' class='alert-link'>Volver a intentar</a>.
+                </div>
+              </div>";
+    }
 
     // Cerrar la declaración y la conexión
     $sql->close();

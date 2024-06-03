@@ -1,6 +1,16 @@
 <?php
 require 'conexion.php';
 
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+	// Si el usuario no ha iniciado sesión, redirigirlo al formulario de inicio de sesión
+	header("Location: login.php");
+	exit();
+}
+
+$usuario = $_SESSION['usuario'];
+
 $sql = "SELECT * FROM zapatillas";
 
 $resultado = $mysqli->query($sql);
@@ -30,11 +40,7 @@ $resultado = $mysqli->query($sql);
 		});
 	</script>
 
-
 </head>
-<?php
-$usuario = $_GET["usuario"];
-?>
 
 <body>
 	<div class="jumbotron jumbotron-fluid">
@@ -48,18 +54,16 @@ $usuario = $_GET["usuario"];
 						<h1 class="display-3">Hola, <?php echo $usuario ?></h1>
 						<p class="lead">Estas son las zapatillas que tenemos en nuestra base de datos</p>
 					</th>
-
 				</tr>
 			</table>
 		</div>
 	</div>
 
-
 	<div class="container">
 
 		<br>
 		<div class="form-group">
-			<?php echo "<a href='registrarZap.php?usuario=$usuario'><button>Registrar Zapatilla</button></a>" ?>
+			<a href='registrarZap.php'><button>Registrar Zapatilla</button></a>
 		</div>
 
 		<br>
@@ -86,7 +90,7 @@ $usuario = $_GET["usuario"];
 					echo "<td>$fila[Precio]€</td>";
 
 					echo "<td><a href='editar.php?id=$fila[id_zapatilla]' class='btn btn-warning'>Editar</a></td>";
-					echo "<td><a href='eliminar.php?id=$fila[id_zapatilla]&usuario=$usuario' class='btn btn-danger'>Eliminar</a></td>";
+					echo "<td><a href='eliminar.php?id=$fila[id_zapatilla]' class='btn btn-danger'>Eliminar</a></td>";
 					echo "</tr>";
 				}
 				$mysqli->close();
@@ -95,9 +99,6 @@ $usuario = $_GET["usuario"];
 		</table>
 
 	</div>
-	</div>
-
-
 </body>
 
 </html>

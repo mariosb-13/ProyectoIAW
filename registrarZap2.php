@@ -1,3 +1,21 @@
+<?php
+require 'conexion.php';
+
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+	// Si el usuario no ha iniciado sesión, redirigirlo al formulario de inicio de sesión
+	header("Location: login.php");
+	exit();
+}
+
+$usuario = $_SESSION['usuario'];
+
+$sql = "SELECT * FROM zapatillas";
+
+$resultado = $mysqli->query($sql);
+?>
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -35,7 +53,7 @@
 			}else{
 				echo "<p>Ha habido un error al agregar la zapatilla</p>";	
 			}
-			echo "<a href=zapatillas.php?usuario=$usuario><button type='button' class='btn btn-primary'>Regresar</button></a>";
+			echo "<a href=zapatillas.php><button type='button' class='btn btn-primary'>Regresar</button></a>";
 		 
 		?>
 

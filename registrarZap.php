@@ -1,24 +1,40 @@
+<?php
+require 'conexion.php';
+
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+	// Si el usuario no ha iniciado sesión, redirigirlo al formulario de inicio de sesión
+	header("Location: login.php");
+	exit();
+}
+
+$usuario = $_SESSION['usuario'];
+
+$sql = "SELECT * FROM zapatillas";
+
+$resultado = $mysqli->query($sql);
+?>
+
 <!doctype html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
-    <link rel="icon" href="images/icono.png" type="image/png">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+	<link rel="icon" href="images/icono.png" type="image/png">
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.dataTables.min.js"></script>
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
 
 	<title>Snkrs.Pro - Registrar</title>
 </head>
-<?php
-$usuario=$_GET["usuario"];
-?>
+
 <body>
 	<div class="container">
 		<div class="row">
@@ -54,7 +70,7 @@ $usuario=$_GET["usuario"];
 						<input type="number" id="stock" name="stock" class="form-control" required>
 					</div>
 
-					<input type="hidden" id="usuario" name="usuario" value="<?php echo $usuario?>" class="form-control" required>
+					<input type="hidden" id="usuario" name="usuario" value="<?php echo $usuario ?>" class="form-control" required>
 
 					<div class="form-group">
 						<label for="fecha_nac">Precio:</label>
