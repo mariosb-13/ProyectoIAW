@@ -25,30 +25,41 @@
     $passwd = $_POST['passwd'];
 
     // Preparar la consulta SQL para evitar inyecciones SQL
-    $sql = $mysqli->prepare("SELECT * FROM usuarios WHERE Usuario = ? AND Password = ?");
+    $sql = $mysqli->prepare("SELECT * FROM usuarios WHERE usuario= ?");
+    $sql->bind_param("s", $usuario);
 
-    $sql->bind_param("ss", $usuario, $passwd);
+    // Ejecutar la consulta
     $sql->execute();
 
-    // Obtener los resultados de la consulta
+    // Obtener el resultado
     $resultado = $sql->get_result();
-    $fila = $resultado->fetch_assoc();
 
-    if ($fila > 0) {
-        // Usuario y contraseña correctos
-        header("Location: zapatillas.php?usuario=$usuario");
-        exit();
-    } else {
-        // Usuario/contraseña incorrectos
-        echo "<div class='container mt-4'>
+    // Verificar si se obtuvieron resultados
+    if ($resultado->num_rows > 0) {
+        $fila = $resultado->fetch_assoc();
+
+        // Verificar si la fila no está vacía
+            // Verificar si la columna 'password' existe en la fila
+            if (isset($fila['Password'])) {
+                // Verificar la contraseña
+                if (password_verify($passwd, $fila['Password'])) {
+                    // Usuario y contraseña correctos
+                    header("Location: zapatillas.php?usuario=$usuario");
+                    exit();
+                }
+            }
+        }
+
+    // Usuario/contraseña incorrectos
+    echo "<div class='container mt-4'>
             <div class='alert alert-danger text-center' role='alert'>
                 Usuario o contraseña incorrectos. <a href='login.php' class='alert-link'>Volver a intentar</a>.
             </div>
           </div>";
-    }
 
-    // Liberar los resultados y cerrar la declaración
+    // Cerrar la declaración y la conexión
     $sql->close();
+    $mysqli->close();
     ?>
 
 </body>
