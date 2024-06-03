@@ -63,7 +63,7 @@ $resultado = $mysqli->query($sql);
 
     <div class="container">
 
-        <a href='registrarUsu.php'><button type="button" class="btn btn-primary">Registrar Usuario</button></a>
+        <a href='registrarUsu.php'><button type="button" class="btn btn-primary btn-lg">Registrar Usuario</button></a>
         <br><br>
 
         <table id="tabla" class="display" style="width:100%">
