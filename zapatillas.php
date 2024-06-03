@@ -34,13 +34,6 @@ $resultado = $mysqli->query($sql);
 
 	<title>Snkrs.Pro</title>
 
-	<style>
-		/* Cuando el stock sea igual a 0 se pondra de color rojo */
-		.nostock {
-			color: red;
-		}
-	</style>
-
 	<script>
 		$(document).ready(function() {
 			$('#tabla').DataTable();
@@ -50,6 +43,7 @@ $resultado = $mysqli->query($sql);
 </head>
 
 <body>
+
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
 			<table>
@@ -68,13 +62,9 @@ $resultado = $mysqli->query($sql);
 
 	<div class="container">
 
-		<br>
-		<div class="form-group">
-			<a href='registrarZap.php'><button>Registrar Zapatilla</button></a>
-		</div>
+		<button type="button" class="btn btn-primary">Registrar Zapatilla</button>
+		<br><br>
 
-		<br>
-		<br>
 
 		<table id="tabla" class="display" style="width:100%">
 			<thead>

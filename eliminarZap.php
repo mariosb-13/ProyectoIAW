@@ -9,7 +9,6 @@ if (!isset($_SESSION['usuario'])) {
 	exit();
 }
 
-$usuario = $_SESSION['usuario'];
 
 $sql = "SELECT * FROM zapatillas";
 

@@ -40,6 +40,7 @@ $resultado = $mysqli->query($sql);
             <a class="btn btn-primary btn-lg" href="registrarUsu.php" role="button">Registrarse</a>
             <a class="btn btn-primary btn-lg" href="login.php" role="button">Iniciar Sesión</a>
         </p>
+        <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Administrar Usuarios</a>
     </div>
 
 
