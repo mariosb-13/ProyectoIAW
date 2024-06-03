@@ -63,7 +63,7 @@ $resultado = $mysqli->query($sql);
 
 	<div class="container">
 
-		<a href="registrarZap.php"><button type="button" class="btn btn-primary">Registrar Zapatilla</button></a>
+		<a href="registrarZap.php"><button type="button" class="btn btn-primary btn-lg">Registrar Zapatilla</button></a>
 		<br><br>
 
 
