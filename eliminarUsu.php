@@ -30,14 +30,14 @@ $resultado = $mysqli->query($sql);
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.dataTables.min.js"></script>
 
-	<title>Snkrs.Pro - Eliminar Zapatilla</title>
+	<title>Snkrs.Pro - Eliminar Usuario</title>
 </head>
 
 <body>
 	<?php
 	require 'conexion.php';
 
-	// Obtengo el id para saber que zapatilla borrar con el usuario para que vuelva a salir luego en la página principal.
+	// Obtengo el id para saber que usuario borrar
 	$id = $_GET['id'];
 
 	// Se prepara la sentencia SQL

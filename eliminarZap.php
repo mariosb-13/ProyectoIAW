@@ -9,7 +9,6 @@ if (!isset($_SESSION['usuario'])) {
 	exit();
 }
 
-
 $sql = "SELECT * FROM zapatillas";
 
 $resultado = $mysqli->query($sql);
@@ -38,7 +37,7 @@ $resultado = $mysqli->query($sql);
 	<?php
 	require 'conexion.php';
 
-	// Obtengo el id para saber que zapatilla borrar con el usuario para que vuelva a salir luego en la página principal.
+	// Obtengo el id para saber que zapatilla borrar
 	$id = $_GET['id'];
 
 	// Se prepara la sentencia SQL

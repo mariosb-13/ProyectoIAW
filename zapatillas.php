@@ -80,6 +80,7 @@ $resultado = $mysqli->query($sql);
 					<th>Modelo</th>
 					<th>Stock</th>
 					<th>Precio</th>
+					<!-- Aqui si no eres usuario administrador no podras ver las columnas de editar y eliminar usuarios -->
 					<?php if ($admin) { ?>
 						<th></th>
 						<th></th>
@@ -90,6 +91,7 @@ $resultado = $mysqli->query($sql);
 				<?php
 				while ($fila = $resultado->fetch_assoc()) {
 					echo "<tr";
+					// Si el nº de stock es menor o igual a 0 se mostrará en color rojo
 					if ($fila['Stock'] <= 0) {
 						echo " class='nostock'";
 					}
@@ -98,6 +100,7 @@ $resultado = $mysqli->query($sql);
 					echo "<td>{$fila['Modelo']}</td>";
 					echo "<td>{$fila['Stock']} ud.</td>";
 					echo "<td>{$fila['Precio']}€</td>";
+					// Aqui si no eres usuario administrador no podras ver las columnas de editar y eliminar usuarios
 					if ($admin) {
 						echo "<td><a href='editarZap.php?id={$fila['id_zapatilla']}' class='btn btn-warning'>Editar</a></td>";
 						echo "<td><a href='eliminar.php?id={$fila['id_zapatilla']}' class='btn btn-danger'>Eliminar</a></td>";

@@ -43,7 +43,6 @@ $resultado = $mysqli->query($sql);
 
 		<div class="row">
 			<div class="col-md-8">
-				<!-- Completar atributos de form -->
 				<form id="registro" name="registro" autocomplete="off" method="post" action="registrarZap2.php">
 					<div class="form-group">
 						<label for="marca">Marca</label>
@@ -62,35 +61,29 @@ $resultado = $mysqli->query($sql);
 					</div>
 					<div class="form-group">
 						<label for="Modelo">Modelo:</label>
-						<input type="text" id="modelo" name="modelo" class="form-control" required>
+						<input type="text" id="modelo" name="modelo" maxlength="50" size="50" class="form-control" required>
 					</div>
 
 					<div class="form-group">
 						<label for="fecha_nac">Stock:</label>
-						<input type="number" id="stock" name="stock" class="form-control" required>
+						<input type="number" id="stock" name="stock" maxlength="10" size="10" class="form-control" required>
 					</div>
 
 					<input type="hidden" id="usuario" name="usuario" value="<?php echo $usuario ?>" class="form-control" required>
 
 					<div class="form-group">
 						<label for="fecha_nac">Precio:</label>
-						<input type="number" id="precio" name="precio" class="form-control" required>
+						<input type="number" id="precio" name="precio" maxlength="10" size="10" class="form-control" required>
 					</div>
 
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary" value="Registrar">
 					</div>
-
-
 				</form>
 			</div>
 		</div>
 	</div>
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="js/jquery-3.4.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -7,7 +7,6 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM zapatillas WHERE id_zapatilla=$id LIMIT 1";
 $resultado = $mysqli->query($sql);
 
-// Se extrae el registro. No se hace en bucle porque el resultado debe ser único
 $fila = $resultado->fetch_assoc();
 
 ?>
@@ -77,11 +76,6 @@ $fila = $resultado->fetch_assoc();
 			</div>
 		</div>
 	</div>
-
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="js/jquery-3.4.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

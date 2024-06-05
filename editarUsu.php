@@ -7,7 +7,6 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM usuarios WHERE id_usuario=$id LIMIT 1";
 $resultado = $mysqli->query($sql);
 
-// Se extrae el registro. No se hace en bucle porque el resultado debe ser único
 $fila = $resultado->fetch_assoc();
 
 ?>
@@ -61,8 +60,6 @@ $fila = $resultado->fetch_assoc();
                         <p>Si desea cambiar la contraseña, haga clic <a href="cambiarPassword.php?id=<?php echo $id ?>">aquí</a>.</p>
 					</div>
 
-
-
 					<div class="form-group">
 						<label for="administrador">Administrador</label>
 						<select name="administrador" id="administrador" class="form-control" required>
@@ -81,11 +78,6 @@ $fila = $resultado->fetch_assoc();
 			</div>
 		</div>
 	</div>
-
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="js/jquery-3.4.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

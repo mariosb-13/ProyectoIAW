@@ -3,8 +3,6 @@ require 'conexion.php';
 
 $id = $_GET['id'];
 
-// Verifica si se ha enviado el formulario para cambiar la contraseña
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtiene la nueva contraseña del formulario
     $nueva_password = $_POST['nueva_password'];
 
@@ -20,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error al cambiar la contraseña: " . $mysqli->error;
     }
-}
 ?>
 
 <!doctype html>
