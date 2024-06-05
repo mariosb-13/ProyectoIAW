@@ -58,7 +58,10 @@ $fila = $resultado->fetch_assoc();
 							<p>Contraseña:</p>
 							<input type="password" name="passwd" maxlength="10" size="10" required readonly value="********">
 						</label>
+                        <p>Si desea cambiar la contraseña, haga clic <a href="cambiarPassword.php?id=<?php echo $id ?>">aquí</a>.</p>
 					</div>
+
+
 
 					<div class="form-group">
 						<label for="administrador">Administrador</label>
