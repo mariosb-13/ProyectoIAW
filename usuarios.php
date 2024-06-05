@@ -71,7 +71,7 @@ $resultado = $mysqli->query($sql);
     <div class="container">
 
         <?php if ($admin) { ?>
-            <a href='registrarUsu.php'><button type="button" class="btn btn-primary btn-lg">Registrar Usuario</button></a>
+            <a href='registrarUsuAdmin.php'><button type="button" class="btn btn-primary btn-lg">Registrar Usuario</button></a>
             <br><br>
         <?php } ?>
 
