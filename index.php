@@ -44,15 +44,16 @@ if (isset($_SESSION['usuario'])) {
         <?php if (isset($usuario)) { ?>
             <h1 class="display-3">Bienvenido <?php echo $usuario; ?>!</h1>
             <hr class="my-2">
-            <p class="lead">Puede acceder a los paneles de control pulsando aquí ⬇</p>
             <p class="lead">
                 <!-- Filtramos si ese usuario es administrador -->
                 <?php if ($admin) { ?>
+            <p class="lead">Puede acceder a los paneles de control pulsando aquí ⬇</p>
             <p class="lead">Tienes opciones de administrador</p>
             <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Administrar Zapatillas</a>
             <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Administrar Usuarios</a>
-        <?php } else { ?>
             <!-- Si no es administrador -->
+        <?php } else { ?>
+            <p class="lead">Puede acceder a ver la base de datos ⬇</p>
             <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Ver Zapatillas</a>
             <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Ver Usuarios</a>
         <?php } ?>

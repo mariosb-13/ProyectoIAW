@@ -35,6 +35,7 @@
     $resultado = $sql->get_result();
     $fila = $resultado->fetch_assoc();
 
+    // Comprueba que la contraseña proporcionada por el usuario es la misma almacenada en la base de datos
     if ($fila && password_verify($passwd, $fila['Password'])) {
         // Iniciar sesión
         session_start();
