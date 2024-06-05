@@ -1,9 +1,20 @@
 <?php
 session_start();
+require 'conexion.php';
 
 // Verifica si hay una sesión activa
 if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
+
+    // Obtener si es administrador o no
+    $sql = $mysqli->prepare("SELECT administrador FROM usuarios WHERE usuario = ?");
+    $sql->bind_param("s", $usuario);
+    $sql->execute();
+    $resultado = $sql->get_result();
+    $fila = $resultado->fetch_assoc();
+    $admin = $fila['administrador'] == 'Si';
+} else {
+    $admin = false;
 }
 ?>
 
@@ -24,33 +35,37 @@ if (isset($_SESSION['usuario'])) {
     <script src="js/jquery.dataTables.min.js"></script>
 
     <title>Snkrs.Pro</title>
-
-
 </head>
 
 <body>
     <div class="jumbotron">
         <?php if (isset($usuario)) { ?>
-        <h1 class="display-3">Bienvenido  <?php echo $usuario; ?>!</h1>
-        <hr class="my-2">
-        <p class="lead">Puede acceder a los paneles de control pulsando aqui ⬇</p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Administrar Zapatillas</a>
-                <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Administrar Usuarios</a>
-            </p>
-            <p class="lead">
-                <a class="btn btn-danger btn-lg" href="cerrar.php" role="button">Cerrar Sesión</a>
-            </p>
-        <?php } else { ?>
-            <h1 class="display-3">Hola, bienvenido a Snkrs.Pro</h1>
-            <p class="lead">Esta es la página de administración de la base de datos de nuestras zapatillas.</p>
+            <h1 class="display-3">Bienvenido <?php echo $usuario; ?>!</h1>
             <hr class="my-2">
-            <p class="lead">Deberá registrarse o iniciar sesión para poder acceder</p>
+            <p class="lead">Puede acceder a los paneles de control pulsando aquí ⬇</p>
             <p class="lead">
-                <a class="btn btn-success btn-lg" href="registrarUsu.php" role="button">Registrarse</a>
-                <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Iniciar Sesión</a>
-            </p>
+                <?php if ($admin) { ?>
+            <p class="lead">Tienes opciones de administrador</p>
+            <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Administrar Zapatillas</a>
+            <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Administrar Usuarios</a>
+        <?php } else { ?>
+            <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Ver Zapatillas</a>
+            <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Ver Usuarios</a>
         <?php } ?>
+        </p>
+        <p class="lead">
+            <a class="btn btn-danger btn-lg" href="cerrar.php" role="button">Cerrar Sesión</a>
+        </p>
+    <?php } else { ?>
+        <h1 class="display-3">Hola, bienvenido a Snkrs.Pro</h1>
+        <p class="lead">Esta es la página de administración de la base de datos de nuestras zapatillas.</p>
+        <hr class="my-2">
+        <p class="lead">Deberá registrarse o iniciar sesión para poder acceder</p>
+        <p class="lead">
+            <a class="btn btn-success btn-lg" href="registrarUsu.php" role="button">Registrarse</a>
+            <a class="btn btn-primary btn-lg" href="login.php" role="button">Iniciar Sesión</a>
+        </p>
+    <?php } ?>
     </div>
 
 </body>
