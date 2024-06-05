@@ -37,8 +37,9 @@ $fila = $resultado->fetch_assoc();
 
 	$nombre = $_POST['nombre'];
 	$usuario = $_POST['usuario'];
+	$admin = $_POST['administrador'];
 
-	$sql = "UPDATE usuarios SET Nombre='$nombre', usuario='$usuario' WHERE id_usuario='$id'";
+	$sql = "UPDATE usuarios SET Nombre='$nombre', usuario='$usuario' , administrador='$admin' WHERE id_usuario='$id'";
 
 
 	$resultado = $mysqli->query($sql);

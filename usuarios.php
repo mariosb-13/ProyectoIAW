@@ -73,6 +73,7 @@ $resultado = $mysqli->query($sql);
                     <th>Nombre</th>
                     <th>Usuario</th>
                     <th>Contraseña</th>
+                    <th>Administrador</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -85,6 +86,7 @@ $resultado = $mysqli->query($sql);
                     echo "<td>$fila[Nombre]</td>";
                     echo "<td>$fila[Usuario]</td>";
                     echo "<td>********</td>"; // No mostrar la contraseña
+                    echo "<td>$fila[Administrador]</td>";
                     echo "<td><a href='editarUsu.php?id=$fila[id_usuario]' class='btn btn-warning'>Editar</a></td>";
                     echo "<td><a href='eliminarUsu.php?id=$fila[id_usuario]' class='btn btn-danger'>Eliminar</a></td>";
                     echo "</tr>";

@@ -3,7 +3,6 @@ require 'conexion.php';
 
 $id = $_GET['id'];
 
-echo $id;
 // Se prepara y ejecuta la sentencia
 $sql = "SELECT * FROM usuarios WHERE id_usuario=$id LIMIT 1";
 $resultado = $mysqli->query($sql);
@@ -41,7 +40,7 @@ $fila = $resultado->fetch_assoc();
 		<div class="row">
 			<div class="col-md-8">
 				<form id="registro" name="registro" autocomplete="off" action="editarUsu2.php" method="post">
-				<div class="form-group">
+					<div class="form-group">
 						<label>
 							<p>Nombre:</p>
 							<input type="text" name="nombre" maxlength="20" size="20" required value="<?php echo $fila['Nombre'] ?>">
@@ -59,6 +58,14 @@ $fila = $resultado->fetch_assoc();
 							<p>Contraseña:</p>
 							<input type="password" name="passwd" maxlength="10" size="10" required readonly value="********">
 						</label>
+					</div>
+
+					<div class="form-group">
+						<label for="administrador">Administrador</label>
+						<select name="administrador" id="administrador" class="form-control" required>
+							<option value="Si">Si</option>
+							<option value="No">No</option>
+						</select>
 					</div>
 
 					<div class="form-group">

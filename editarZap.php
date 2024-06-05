@@ -40,7 +40,7 @@ $fila = $resultado->fetch_assoc();
 		<div class="row">
 			<div class="col-md-8">
 				<form id="registro" name="registro" autocomplete="off" action="editar2.php" method="post">
-				<div class="form-group">
+					<div class="form-group">
 						<label>
 							<p>Marca:</p>
 							<input type="text" name="marca" maxlength="20" size="20" required readonly value="<?php echo $fila['Marca'] ?>">

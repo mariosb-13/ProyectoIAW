@@ -34,6 +34,14 @@
 						<label for="passwd" class="form-label">Contraseña</label>
 						<input type="password" name="passwd" id="passwd" class="form-control" required>
 					</div>
+					<div class="form-group">
+						<label for="administrador">Administrador</label>
+						<select name="administrador" id="administrador" class="form-control" required>
+							<option value="Si">Si</option>
+							<option value="No">No</option>
+						</select>
+						<input type="hidden" name="id" value="<?php echo $fila['id'] ?>">
+					</div>
 					<div class="mb-3">
 						<button type="submit" class="btn btn-success btn-custom">Registrar</button>
 					</div>
