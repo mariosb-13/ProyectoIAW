@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-06-2024 a las 10:54:24
+-- Tiempo de generación: 05-06-2024 a las 12:45:34
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -40,8 +40,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `Nombre`, `Usuario`, `Password`, `Administrador`) VALUES
-(24, 'Administrador', 'admin', '$2y$10$ohVRj40hAQXEQ/Zrayb1xO8oW3mtsEJG3vLzjWf8OxHPrYSOYP9GO', 'Si'),
-(27, 'Mario Sanchez', 'mario', '$2y$10$.AjFOfEbnZ1Wy0vigbv4OuEajdh/CmicE.hx2skjtDi3OkunaQowi', 'No'),
+(1, 'Administrador', 'admin', '$2y$10$9R1rKi6M9HR3u3Fim4WK9OeuRzkdcxSsHHXyNdK26MURoEBH1VyV2', 'Si'),
+(2, 'Mario Sanchez', 'Mario', '$2y$10$cell9XwaaMlgSRPTMQj2zOzNR1JzFCVZkuKwQc5rhiTaIsbnlp26W', 'No'),
 (32, 'Usuario', 'usuario', '$2y$10$tz5uZgZzyf8JS9mgCMQKYO.YxtX.ozemn4Uqry53.HgoIioT/UeJu', 'Si'),
 (33, 'Martin López', 'Martin', '$2y$10$.aG8GnfV5N0fBgrEBtYIMeq/sS0T339mzXHayiyw9/xVJy3dcj0UK', 'No');
 
@@ -101,7 +101,7 @@ ALTER TABLE `zapatillas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `zapatillas`

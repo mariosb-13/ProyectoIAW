@@ -44,9 +44,9 @@ $fila = $resultado->fetch_assoc();
 	$resultado = $mysqli->query($sql);
 
 	if ($resultado > 0) {
-		echo "<div class='alert alert-primary' role='alert'> Registro modificado </div>";
+		echo "<div class='alert alert-primary' role='alert'> Usuario modificado </div>";
 	} else {
-		echo "<p>Ha habido un error al modificar el registro</p>";
+		echo "<p>Ha habido un error al modificar el usuario</p>";
 	}
 	echo "<a href=usuarios.php><button type='button' class='btn btn-primary'>Regresar</button></a>";
 	?>
