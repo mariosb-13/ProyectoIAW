@@ -14,7 +14,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
 
-	<title>Snkrs.Pro - Iniciar Sesión</title>
+    <title>Snkrs.Pro - Iniciar Sesión</title>
 </head>
 
 <body>
@@ -30,6 +30,9 @@
                     <div class="mb-3">
                         <label for="passwd" class="form-label">Contraseña</label>
                         <input type="password" name="passwd" id="passwd" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <a href="cambiarPasswd.php" class="text-secondary">¿Ha olvidado la contraseña?</a>
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-success btn-custom">Iniciar sesión</button>
