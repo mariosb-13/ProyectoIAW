@@ -63,7 +63,7 @@ if (isset($_SESSION['usuario'])) {
     <?php } else { ?>
         <!-- Aquí si no hay ningun usuario logeado en la pagina -->
         <h1 class="display-3">Hola, bienvenido a Snkrs.Pro</h1>
-        <p class="lead">Esta es la página de administración de la base de datos de nuestras zapatillas.</p>
+        <p class="lead">Esta es la página de administración de la base de datos de nuestra tienda.</p>
         <hr class="my-2">
         <p class="lead">Deberá registrarse o iniciar sesión para poder acceder</p>
         <p class="lead">
