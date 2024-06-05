@@ -11,8 +11,15 @@ if (!isset($_SESSION['usuario'])) {
 
 $usuario = $_SESSION['usuario'];
 
-$sql = "SELECT * FROM usuarios";
+// Obtener  si el usuario es admin
+$sql = $mysqli->prepare("SELECT administrador FROM usuarios WHERE usuario = ?");
+$sql->bind_param("s", $usuario);
+$sql->execute();
+$resultado = $sql->get_result();
+$fila = $resultado->fetch_assoc();
+$admin = $fila['administrador'] == 'Si';
 
+$sql = "SELECT * FROM usuarios";
 $resultado = $mysqli->query($sql);
 ?>
 
@@ -63,8 +70,10 @@ $resultado = $mysqli->query($sql);
 
     <div class="container">
 
-        <a href='registrarUsu.php'><button type="button" class="btn btn-primary btn-lg">Registrar Usuario</button></a>
-        <br><br>
+        <?php if ($admin) { ?>
+            <a href='registrarUsu.php'><button type="button" class="btn btn-primary btn-lg">Registrar Usuario</button></a>
+            <br><br>
+        <?php } ?>
 
         <table id="tabla" class="display" style="width:100%">
             <thead>
@@ -74,21 +83,25 @@ $resultado = $mysqli->query($sql);
                     <th>Usuario</th>
                     <th>Contraseña</th>
                     <th>Administrador</th>
-                    <th></th>
-                    <th></th>
+                    <?php if ($admin) { ?>
+                        <th></th>
+                        <th></th>
+                    <?php } ?>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 while ($fila = $resultado->fetch_assoc()) {
                     echo "<tr>";
-                    echo "<td>$fila[id_usuario]</td>";
-                    echo "<td>$fila[Nombre]</td>";
-                    echo "<td>$fila[Usuario]</td>";
+                    echo "<td>{$fila['id_usuario']}</td>";
+                    echo "<td>{$fila['Nombre']}</td>";
+                    echo "<td>{$fila['Usuario']}</td>";
                     echo "<td>********</td>"; // No mostrar la contraseña
-                    echo "<td>$fila[Administrador]</td>";
-                    echo "<td><a href='editarUsu.php?id=$fila[id_usuario]' class='btn btn-warning'>Editar</a></td>";
-                    echo "<td><a href='eliminarUsu.php?id=$fila[id_usuario]' class='btn btn-danger'>Eliminar</a></td>";
+                    echo "<td>{$fila['Administrador']}</td>";
+                    if ($admin) {
+                        echo "<td><a href='editarUsu.php?id={$fila['id_usuario']}' class='btn btn-warning'>Editar</a></td>";
+                        echo "<td><a href='eliminarUsu.php?id={$fila['id_usuario']}' class='btn btn-danger'>Eliminar</a></td>";
+                    }
                     echo "</tr>";
                 }
                 $mysqli->close();

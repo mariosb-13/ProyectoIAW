@@ -46,7 +46,7 @@
 						<button type="submit" class="btn btn-success btn-custom">Registrar</button>
 					</div>
 					<div class="text-center">
-						<a href="usuarios.php" class="btn btn-danger btn-custom">Volver</a>
+						<a href="index.php" class="btn btn-danger btn-custom">Volver</a>
 					</div>
 				</form>
 			</div>

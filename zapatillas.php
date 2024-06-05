@@ -11,8 +11,15 @@ if (!isset($_SESSION['usuario'])) {
 
 $usuario = $_SESSION['usuario'];
 
-$sql = "SELECT * FROM zapatillas";
+// Obtener si el usuario es admin
+$sql = $mysqli->prepare("SELECT administrador FROM usuarios WHERE usuario = ?");
+$sql->bind_param("s", $usuario);
+$sql->execute();
+$resultado = $sql->get_result();
+$fila = $resultado->fetch_assoc();
+$admin = $fila['administrador'] == 'Si';
 
+$sql = "SELECT * FROM zapatillas";
 $resultado = $mysqli->query($sql);
 ?>
 
@@ -66,7 +73,6 @@ $resultado = $mysqli->query($sql);
 		<a href="registrarZap.php"><button type="button" class="btn btn-primary btn-lg">Registrar Zapatilla</button></a>
 		<br><br>
 
-
 		<table id="tabla" class="display" style="width:100%">
 			<thead>
 				<tr>
@@ -74,8 +80,10 @@ $resultado = $mysqli->query($sql);
 					<th>Modelo</th>
 					<th>Stock</th>
 					<th>Precio</th>
-					<th></th>
-					<th></th>
+					<?php if ($admin) { ?>
+						<th></th>
+						<th></th>
+					<?php } ?>
 				</tr>
 			</thead>
 			<tbody>
@@ -86,12 +94,14 @@ $resultado = $mysqli->query($sql);
 						echo " class='nostock'";
 					}
 					echo ">";
-					echo "<td>$fila[Marca]</td>";
-					echo "<td>$fila[Modelo]</td>";
-					echo "<td>$fila[Stock] ud.</td>";
-					echo "<td>$fila[Precio]€</td>";
-					echo "<td><a href='editarZap.php?id=$fila[id_zapatilla]' class='btn btn-warning'>Editar</a></td>";
-					echo "<td><a href='eliminar.php?id=$fila[id_zapatilla]' class='btn btn-danger'>Eliminar</a></td>";
+					echo "<td>{$fila['Marca']}</td>";
+					echo "<td>{$fila['Modelo']}</td>";
+					echo "<td>{$fila['Stock']} ud.</td>";
+					echo "<td>{$fila['Precio']}€</td>";
+					if ($admin) {
+						echo "<td><a href='editarZap.php?id={$fila['id_zapatilla']}' class='btn btn-warning'>Editar</a></td>";
+						echo "<td><a href='eliminar.php?id={$fila['id_zapatilla']}' class='btn btn-danger'>Eliminar</a></td>";
+					}
 					echo "</tr>";
 				}
 				$mysqli->close();
