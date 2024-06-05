@@ -4,7 +4,7 @@ require 'conexion.php';
 $id = $_POST['id'];
 
 // Se prepara y ejecuta la sentencia
-$sql = "SELECT * FROM usuarios WHERE id_usuario=$id LIMIT 1";
+$sql = "SELECT * FROM zapatillas WHERE id_zapatilla=$id LIMIT 1";
 $resultado = $mysqli->query($sql);
 
 $fila = $resultado->fetch_assoc();
@@ -34,21 +34,22 @@ $fila = $resultado->fetch_assoc();
 
 	require 'conexion.php';
 
-	$nombre = $_POST['nombre'];
-	$usuario = $_POST['usuario'];
-	$admin = $_POST['administrador'];
+	$marca = $_POST['marca'];
+	$modelo = $_POST['modelo'];
+	$stock = $_POST['stock'];
+	$precio = $_POST['precio'];
 
-	$sql = "UPDATE usuarios SET Nombre='$nombre', usuario='$usuario' , administrador='$admin' WHERE id_usuario='$id'";
+	$sql = "UPDATE zapatillas SET Marca='$marca', Modelo='$modelo' , Stock='$stock', Precio='$precio' WHERE id_zapatilla='$id'";
 
 
 	$resultado = $mysqli->query($sql);
 
 	if ($resultado > 0) {
-		echo "<div class='alert alert-primary' role='alert'> Registro modificado </div>";
+		echo "<div class='alert alert-primary' role='alert'> Zapatilla modificada </div>";
 	} else {
-		echo "<p>Ha habido un error al modificar el registro</p>";
+		echo "<p>Ha habido un error al modificar la zapatilla</p>";
 	}
-	echo "<a href=usuarios.php><button type='button' class='btn btn-primary'>Regresar</button></a>";
+	echo "<a href=zapatillas.php><button type='button' class='btn btn-primary'>Regresar</button></a>";
 	?>
 </body>
 

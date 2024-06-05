@@ -39,7 +39,7 @@ $fila = $resultado->fetch_assoc();
 
 		<div class="row">
 			<div class="col-md-8">
-				<form id="registro" name="registro" autocomplete="off" action="editar2.php" method="post">
+				<form id="registro" name="registro" autocomplete="off" action="editarZap2.php" method="post">
 					<div class="form-group">
 						<label>
 							<p>Marca:</p>
