@@ -22,7 +22,7 @@
         <div class="card login-card">
             <div class="card-body">
                 <h1 class="card-title text-center">Registrar Usuario</h1>
-                <form action="registrarUsu2.php" method="post">
+                <form action="registrarUsuAdmin2.php" method="post">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre Completo:</label>
                         <input type="text" name="nombre" id="nombre" class="form-control" required>

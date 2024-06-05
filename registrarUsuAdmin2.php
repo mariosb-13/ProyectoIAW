@@ -25,6 +25,7 @@
 	$usuario = $_POST['usuario'];
 	$passwd = $_POST['passwd'];
 	$passwd_segura = password_hash($passwd, PASSWORD_DEFAULT);
+	$admin = $_POST['administrador'];
 
 
 	//Preparo una sentencia para obtener los datos que quiero de la BD
@@ -37,7 +38,7 @@
 	if ($fila <= 0) {
 
 		//Se prepara la sentencia SQL
-		$sql = "INSERT INTO usuarios (nombre,usuario,password,administrador) VALUES('$nombre','$usuario','$passwd_segura','No')";
+		$sql = "INSERT INTO usuarios (nombre,usuario,password,administrador) VALUES('$nombre','$usuario','$passwd_segura','$admin')";
 		$resultado = $mysqli->query($sql);
 
 		//Se ejecuta la sentencia y se guarda el resultado en $resultado
