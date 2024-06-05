@@ -18,7 +18,7 @@
 <body>
     <div class='container mt-4'>
         <div class='alert alert-info text-center' role='alert'>
-            Pongase en contacto con el administrador de su sistema. <a href='index.php' class='alert-link'>Volver</a>.
+            Pongase en contacto con el administrador del servidor. <a href='index.php' class='alert-link'>Volver.</a>
         </div>
     </div>"
 </body>

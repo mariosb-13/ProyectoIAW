@@ -32,7 +32,7 @@
                         <input type="password" name="passwd" id="passwd" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <a href="cambiarPasswd.php" class="text-secondary">¿Ha olvidado la contraseña?</a>
+                        <a href="admin.php" class="text-secondary">¿Ha olvidado la contraseña?</a>
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-success btn-custom">Iniciar sesión</button>
