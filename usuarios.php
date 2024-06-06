@@ -69,7 +69,7 @@ $resultado = $mysqli->query($sql);
     </div>
 
     <div class="container">
-<!-- Si el usuario es administrador mostrara el boton para registrar usuarios y darles privilegios de administrador -->
+        <!-- Si el usuario es administrador mostrara el boton para registrar usuarios y darles privilegios de administrador -->
         <?php if ($admin) { ?>
             <a href='registrarUsuAdmin.php'><button type="button" class="btn btn-primary btn-lg">Registrar Usuario</button></a>
             <br><br>
@@ -82,9 +82,9 @@ $resultado = $mysqli->query($sql);
                     <th>Nombre</th>
                     <th>Usuario</th>
                     <th>Contraseña</th>
-                    <th>Administrador</th>
-                    <!-- Aqui si no eres usuario administrador no podras ver las columnas de editar y eliminar usuarios -->
+                    <!-- Aqui si no eres usuario administrador no podras ver las columnas de administrador, editar y eliminar usuarios -->
                     <?php if ($admin) { ?>
+                        <th>Administrador</th>
                         <th></th>
                         <th></th>
                     <?php } ?>
@@ -98,9 +98,9 @@ $resultado = $mysqli->query($sql);
                     echo "<td>{$fila['Nombre']}</td>";
                     echo "<td>{$fila['Usuario']}</td>";
                     echo "<td>********</td>";
-                    echo "<td>{$fila['Administrador']}</td>";
-                    //Aqui si no eres usuario administrador no podras ver las columnas de editar y eliminar usuarios
+                    //Aqui si no eres usuario administrador no podras ver las columnas de administrador, editar y eliminar usuarios
                     if ($admin) {
+                        echo "<td>{$fila['Administrador']}</td>";
                         echo "<td><a href='editarUsu.php?id={$fila['id_usuario']}' class='btn btn-warning'>Editar</a></td>";
                         echo "<td><a href='eliminarUsu.php?id={$fila['id_usuario']}' class='btn btn-danger'>Eliminar</a></td>";
                     }
