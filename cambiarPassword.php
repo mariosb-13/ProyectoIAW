@@ -3,21 +3,6 @@ require 'conexion.php';
 
 $id = $_GET['id'];
 
-    // Obtiene la nueva contraseña del formulario
-    $nueva_password = $_POST['nueva_password'];
-
-    // Encripta la nueva contraseña
-    $password_encriptada = password_hash($nueva_password, PASSWORD_DEFAULT);
-
-    // Actualiza la contraseña en la base de datos
-    $sql = "UPDATE usuarios SET Contraseña='$password_encriptada' WHERE id_usuario=$id";
-    if ($mysqli->query($sql) === TRUE) {
-        // Redirige al usuario a la página de éxito
-        header("Location: cambio_password_exito.php");
-        exit();
-    } else {
-        echo "Error al cambiar la contraseña: " . $mysqli->error;
-    }
 ?>
 
 <!doctype html>
