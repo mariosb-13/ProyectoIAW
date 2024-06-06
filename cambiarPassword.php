@@ -11,7 +11,6 @@ if (!isset($_SESSION['usuario'])) {
 
 $id = $_GET['id'];
 
-
 $usuario = $_SESSION['usuario'];
 
 // Obtener si el usuario es admin
@@ -76,8 +75,8 @@ $resultado = $mysqli->query($sql);
 
 <?php } else { ?>
     <div class='container mt-4'>
-        <div class='alert alert-success text-center' role='alert'>
-            El usuario ha sido añadido correctamente <a href='index.php' class='alert-link'>Volver</a>.
+        <div class='alert alert-danger text-center' role='alert'>
+            No tiene derechos de administrador para acceder a la página <a href='index.php' class='alert-link'>Volver</a>.
         </div>
     </div>
 <?php } ?>
