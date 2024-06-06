@@ -49,7 +49,7 @@ $resultado = $mysqli->query($sql);
 	if ($resultado > 0) {
 		echo "<div class='alert alert-primary' role='alert'> Zapatilla eliminada </div>";
 	} else {
-		echo "<p>Ha habido un error al eliminar la zapatilla</p>";
+		echo "<div class='alert alert-danger' role='alert'> Ha habido un error al eliminar la zapatilla </div>";
 	}
 	echo "<a href=zapatillas.php?><button type='button' class='btn btn-primary'>Regresar</button></a>";
 

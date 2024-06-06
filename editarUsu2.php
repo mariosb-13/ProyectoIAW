@@ -46,7 +46,7 @@ $fila = $resultado->fetch_assoc();
 	if ($resultado > 0) {
 		echo "<div class='alert alert-primary' role='alert'> Usuario modificado </div>";
 	} else {
-		echo "<p>Ha habido un error al modificar el usuario</p>";
+		echo "<div class='alert alert-danger' role='alert'> Ha habido un error al modificar el usuario </div>";
 	}
 	echo "<a href=usuarios.php><button type='button' class='btn btn-primary'>Regresar</button></a>";
 	?>

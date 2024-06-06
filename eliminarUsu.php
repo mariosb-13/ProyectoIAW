@@ -49,7 +49,7 @@ $resultado = $mysqli->query($sql);
 	if ($resultado > 0) {
 		echo "<div class='alert alert-primary' role='alert'> Usuario eliminado </div>";
 	} else {
-		echo "<p>Ha habido un error al eliminar el usuario</p>";
+		echo "<div class='alert alert-danger' role='alert'> Ha habido un error al eliminar el usuario </div>";
 	}
 	echo "<a href=usuarios.php?><button type='button' class='btn btn-primary'>Regresar</button></a>";
 

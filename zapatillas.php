@@ -103,7 +103,7 @@ $resultado = $mysqli->query($sql);
 					// Aqui si no eres usuario administrador no podras ver las columnas de editar y eliminar usuarios
 					if ($admin) {
 						echo "<td><a href='editarZap.php?id={$fila['id_zapatilla']}' class='btn btn-warning'>Editar</a></td>";
-						echo "<td><a href='eliminar.php?id={$fila['id_zapatilla']}' class='btn btn-danger'>Eliminar</a></td>";
+						echo "<td><a href='eliminarZap.php?id={$fila['id_zapatilla']}' class='btn btn-danger'>Eliminar</a></td>";
 					}
 					echo "</tr>";
 				}

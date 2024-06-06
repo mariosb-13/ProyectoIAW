@@ -47,7 +47,7 @@ $fila = $resultado->fetch_assoc();
 	if ($resultado > 0) {
 		echo "<div class='alert alert-primary' role='alert'> Zapatilla modificada </div>";
 	} else {
-		echo "<p>Ha habido un error al modificar la zapatilla</p>";
+		echo "<div class='alert alert-danger' role='alert'> Ha habido un error al modificar la zapatilla </div>";
 	}
 	echo "<a href=zapatillas.php><button type='button' class='btn btn-primary'>Regresar</button></a>";
 	?>
