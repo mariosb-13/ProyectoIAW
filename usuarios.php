@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario'])) {
 
 $usuario = $_SESSION['usuario'];
 
-// Obtener  si el usuario es admin
+// Obtener si el usuario es admin
 $sql = $mysqli->prepare("SELECT administrador FROM usuarios WHERE usuario = ?");
 $sql->bind_param("s", $usuario);
 $sql->execute();
@@ -60,7 +60,7 @@ $resultado = $mysqli->query($sql);
                     </th>
                     <th>
                         <h1 class="display-3">Hola, <?php echo $usuario ?></h1>
-                        <p class="lead">Aqui puedes administrar todos los usuarios registrados en nuestra base de datos</p>
+                        <p class="lead">Aquí puedes administrar todos los usuarios registrados en nuestra base de datos.</p>
                         <a href="index.php"><button type="button" class="btn btn-outline-primary">Volver</button></a>
                     </th>
                 </tr>
@@ -69,7 +69,6 @@ $resultado = $mysqli->query($sql);
     </div>
 
     <div class="container">
-        <!-- Si el usuario es administrador mostrara el boton para registrar usuarios y darles privilegios de administrador -->
         <?php if ($admin) { ?>
             <a href='registrarUsuAdmin.php'><button type="button" class="btn btn-primary btn-lg">Registrar Usuario</button></a>
             <br><br>
@@ -82,7 +81,6 @@ $resultado = $mysqli->query($sql);
                     <th>Nombre</th>
                     <th>Usuario</th>
                     <th>Contraseña</th>
-                    <!-- Aqui si no eres usuario administrador no podras ver las columnas de administrador, editar y eliminar usuarios -->
                     <?php if ($admin) { ?>
                         <th>Administrador</th>
                         <th></th>
@@ -98,10 +96,9 @@ $resultado = $mysqli->query($sql);
                     echo "<td>{$fila['Nombre']}</td>";
                     echo "<td>{$fila['Usuario']}</td>";
                     echo "<td>********</td>";
-                    //Aqui si no eres usuario administrador no podras ver las columnas de administrador, editar y eliminar usuarios
                     if ($admin) {
                         echo "<td>{$fila['Administrador']}</td>";
-                        echo "<td><a href='editarUsu.php?id={$fila['id_usuario']}' class='btn btn-warning'>Editar</a></td>";
+                        echo "<td><a href='editarUsu.php?id={$fila['id_usuario']}&admin={$fila['Administrador']}' class='btn btn-warning'>Editar</a></td>";
                         echo "<td><a href='eliminarUsu.php?id={$fila['id_usuario']}' class='btn btn-danger'>Eliminar</a></td>";
                     }
                     echo "</tr>";
