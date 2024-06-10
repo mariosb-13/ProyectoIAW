@@ -45,6 +45,12 @@ $fila = $resultado->fetch_assoc();
         exit(); // Terminar el script
     }
 
+	if ($precio < 0) {
+		echo "<div class='alert alert-danger' role='alert'>El precio no puede ser menor que 0</div>";
+		echo "<a href='zapatillas.php'><button type='button' class='btn btn-primary'>Regresar</button></a>";
+		exit();
+	}
+
     $sql = "UPDATE zapatillas SET Marca='$marca', Modelo='$modelo' , Stock='$stock', Precio='$precio' WHERE id_zapatilla='$id'";
 
     $resultado = $mysqli->query($sql);
