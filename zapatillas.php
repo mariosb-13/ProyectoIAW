@@ -92,7 +92,7 @@ $resultado = $mysqli->query($sql);
 				while ($fila = $resultado->fetch_assoc()) {
 					echo "<tr";
 					// Si el nº de stock es menor o igual a 0 se mostrará en color rojo
-					if ($fila['Stock'] <= 0) {
+					if ($fila['Stock'] == 0) {
 						echo " class='nostock'";
 					}
 					echo ">";
