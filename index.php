@@ -51,6 +51,7 @@ if (isset($_SESSION['usuario'])) {
             <p class="lead">Tienes opciones de administrador</p>
             <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Administrar Zapatillas</a>
             <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Administrar Usuarios</a>
+            <a class="btn btn-primary btn-lg" href="ventas.php" role="button">Administrar Ventas</a>
             <!-- Si no es administrador -->
         <?php } else { ?>
             <p class="lead">Puede acceder a ver la base de datos ⬇</p>
