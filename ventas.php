@@ -32,48 +32,40 @@ $resultado = $mysqli->query($sql);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Snkrs.Pro - Gestión de Ventas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/jquery.dataTables.min.css">
     <link rel="icon" href="images/icono.png" type="image/png">
-
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.dataTables.min.js"></script>
-
-    <title>Snkrs.Pro - Gestión de Ventas</title>
-
-    <script>
-        $(document).ready(function() {
-            $('#tabla').DataTable();
-        });
-    </script>
-
 </head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tabla').DataTable();
+    });
+</script>
 
 <body>
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <table>
-                <tr>
-                    <th>
-                        <p><img class="img" src="images/icono.png"></p>
-                    </th>
-                    <th>
-                        <h1 class="display-3">Hola, <?php echo $usuario ?></h1>
-                        <p class="lead">Aquí puedes administrar todas las ventas registradas en nuestra base de datos</p>
-                        <a href="index.php"><button type="button" class="btn btn-outline-primary">Volver</button></a>
-                    </th>
-                </tr>
-            </table>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <img class="img" src="images/icono.png">
+                <h1 class="display-4 mb-4">Nuestras ventas.</h1>
+                <p class="lead mb-4">Aquí puedes administrar todas las ventas registradas en nuestra base de datos</p>
+                <a href="index.php" class="btn btn-outline-primary btn-lg">Volver</a>
+            </div>
         </div>
     </div>
 
     <div class="container">
-            <a href='registrarVentas.php'><button type="button" class="btn btn-primary btn-lg">Registrar Venta</button></a>
-            <br><br>
+        <a href="registrarVentas.php" class="btn btn-success mb-4"><i class="bi bi-plus-lg"></i> Registrar Venta</a>
+        <br><br>
 
         <table id="tabla" class="display" style="width:100%">
             <thead>
@@ -101,8 +93,8 @@ $resultado = $mysqli->query($sql);
                     echo "<td>{$fila['cantidad']}</td>";
                     echo "<td>{$fila['fecha_venta']}</td>";
                     if ($admin) {
-                        echo "<td><a href='editarVenta.php?id={$fila['id_venta']}' class='btn btn-warning'>Editar</a></td>";
-                        echo "<td><a href='eliminarVentas.php?id={$fila['id_venta']}' class='btn btn-danger'>Eliminar</a></td>";
+                        echo "<td><a href='editarVenta.php?id={$fila['id_venta']}' class='btn btn-warning btn-sm'><i class='bi bi-pencil-square'></i> Editar</a></td>";
+                        echo "<td><a href='eliminarVentas.php?id={$fila['id_venta']}' class='btn btn-danger btn-sm'><i class='bi bi-trash-fill'></i> Eliminar</a></td>";
                     }
                     echo "</tr>";
                 }
