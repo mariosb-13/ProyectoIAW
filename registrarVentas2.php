@@ -33,42 +33,60 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             </div>";
     } else {
-        // Actualizar el stock de la zapatilla
-        $sql = "UPDATE zapatillas SET stock = stock - ? WHERE id_zapatilla = ?";
+        // Obtener el stock actual de la zapatilla
+        $sql = "SELECT stock FROM zapatillas WHERE id_zapatilla = ?";
         $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("ii", $cantidad, $id_zapatilla);
+        $stmt->bind_param("i", $id_zapatilla);
+        $stmt->execute();
+        $stmt->bind_result($stock_actual);
+        $stmt->fetch();
+        $stmt->close();
 
-        if ($stmt->execute()) {
-            // Registrar la venta
-            $sql = "INSERT INTO ventas (id_usuario, id_zapatilla, cantidad, fecha_venta) VALUES (?, ?, ?, ?)";
+        if ($cantidad > $stock_actual) {
+            echo "<div class='container mt-4'>
+                <div class='alert alert-danger text-center' role='alert'>
+                    La cantidad solicitada excede el stock disponible <a href='registrarVentas.php' class='alert-link'>Volver a intentar</a>.
+                </div>
+                </div>";
+        } else {
+            // Actualizar el stock de la zapatilla
+            $sql = "UPDATE zapatillas SET stock = stock - ? WHERE id_zapatilla = ?";
             $stmt = $mysqli->prepare($sql);
-            $stmt->bind_param("iiis", $id_usuario, $id_zapatilla, $cantidad, $fecha_venta);
+            $stmt->bind_param("ii", $cantidad, $id_zapatilla);
 
             if ($stmt->execute()) {
-                echo "<div class='container mt-4'>
-                    <div class='alert alert-success text-center' role='alert'>
-                    La venta ha sido registrada correctamente <a href='ventas.php' class='alert-link'>Volver</a>.
-                    </div>
-                    </div>";
-            } else {
-                // Revertir la actualización del stock si falla el registro de la venta
-                $sql = "UPDATE zapatillas SET stock = stock + ? WHERE id_zapatilla = ?";
+                // Registrar la venta
+                $sql = "INSERT INTO ventas (id_usuario, id_zapatilla, cantidad, fecha_venta) VALUES (?, ?, ?, ?)";
                 $stmt = $mysqli->prepare($sql);
-                $stmt->bind_param("ii", $cantidad, $id_zapatilla);
-                $stmt->execute();
+                $stmt->bind_param("iiis", $id_usuario, $id_zapatilla, $cantidad, $fecha_venta);
 
+                if ($stmt->execute()) {
+                    echo "<div class='container mt-4'>
+                        <div class='alert alert-success text-center' role='alert'>
+                        La venta ha sido registrada correctamente <a href='ventas.php' class='alert-link'>Volver</a>.
+                        </div>
+                        </div>";
+                } else {
+                    // Revertir la actualización del stock si falla el registro de la venta
+                    $sql = "UPDATE zapatillas SET stock = stock + ? WHERE id_zapatilla = ?";
+                    $stmt = $mysqli->prepare($sql);
+                    $stmt->bind_param("ii", $cantidad, $id_zapatilla);
+                    $stmt->execute();
+
+                    echo "<div class='container mt-4'>
+                        <div class='alert alert-danger text-center' role='alert'>
+                            Ha ocurrido un error al registrar la venta <a href='registrarVentas.php' class='alert-link'>Volver a intentar</a>.
+                        </div>
+                        </div>";
+                }
+            } else {
                 echo "<div class='container mt-4'>
                     <div class='alert alert-danger text-center' role='alert'>
-                        Ha ocurrido un error al registrar la venta <a href='registrarVentas.php' class='alert-link'>Volver a intentar</a>.
+                        Ha ocurrido un error al actualizar el stock <a href='registrarVentas.php' class='alert-link'>Volver a intentar</a>.
                     </div>
                     </div>";
             }
-        } else {
-            echo "<div class='container mt-4'>
-                <div class='alert alert-danger text-center' role='alert'>
-                    Ha ocurrido un error al actualizar el stock <a href='registrarVentas.php' class='alert-link'>Volver a intentar</a>.
-                </div>
-                </div>";
         }
     }
 }
+?>

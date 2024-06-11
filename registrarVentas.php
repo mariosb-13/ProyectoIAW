@@ -41,17 +41,17 @@
             <div class="form-group">
                 <label for="id_usuario">Usuario:</label>
                 <select name="id_usuario" id="id_usuario" class="form-control" required>
-                    <?php while ($fila = $resultado_usuarios->fetch_assoc()) : ?>
+                    <?php while ($fila = $resultado_usuarios->fetch_assoc()) { ?>
                         <option value="<?php echo $fila['id_usuario']; ?>"><?php echo $fila['nombre']; ?></option>
-                    <?php endwhile; ?>
+                    <?php }; ?>
                 </select>
             </div>
             <div class="form-group">
                 <label for="id_zapatilla">Zapatilla:</label>
                 <select name="id_zapatilla" id="id_zapatilla" class="form-control" required>
-                    <?php while ($fila = $resultado_zapatillas->fetch_assoc()) : ?>
+                    <?php while ($fila = $resultado_zapatillas->fetch_assoc()) { ?>
                         <option value="<?php echo $fila['id_zapatilla']; ?>"><?php echo $fila['marca'] . " " . $fila['modelo']; ?> (Stock: <?php echo $fila['stock']; ?>)</option>
-                    <?php endwhile; ?>
+                    <?php }; ?>
                 </select>
             </div>
             <div class="form-group">
