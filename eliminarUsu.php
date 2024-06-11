@@ -51,7 +51,7 @@ $resultado = $mysqli->query($sql);
 	} else {
 		echo "<div class='alert alert-danger' role='alert'> Ha habido un error al eliminar el usuario </div>";
 	}
-	echo "<a href=usuarios.php?><button type='button' class='btn btn-primary'>Regresar</button></a>";
+	echo "<a href=usuarios.php><button type='button' class='btn btn-primary'>Regresar</button></a>";
 
 
 	?>

@@ -32,7 +32,6 @@
         <div class="container">
             <h1 class="display-3">Registrar Venta</h1>
             <p class="lead">Registrar una nueva venta en la base de datos.</p>
-            <a href="ventas.php"><button type="button" class="btn btn-outline-primary">Volver a Ventas</button></a>
         </div>
     </div>
 
@@ -64,6 +63,8 @@
             </div>
             <button type="submit" class="btn btn-primary">Registrar Venta</button>
         </form>
+        <br>
+        <a href="ventas.php"><button type="button" class="btn btn-outline-primary">Volver a Ventas</button></a>
     </div>
 </body>
 
