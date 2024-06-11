@@ -21,7 +21,7 @@
     <?php
     require 'conexion.php';
     // Obtener clientes y zapatillas para el formulario
-    $sql_clientes = "SELECT id_cliente, nombre FROM clientes";
+    $sql_clientes = "SELECT id_cliente, nombre, apellido FROM clientes";
     $resultado_clientes = $mysqli->query($sql_clientes);
 
     $sql_zapatillas = "SELECT id_zapatilla, marca, modelo, stock FROM zapatillas";
@@ -42,7 +42,7 @@
                 <label for="id_cliente">Cliente:</label>
                 <select name="id_cliente" id="id_cliente" class="form-control" required>
                     <?php while ($fila = $resultado_clientes->fetch_assoc()) { ?>
-                        <option value="<?php echo $fila['id_cliente']; ?>"><?php echo $fila['nombre']; ?></option>
+                        <option value="<?php echo $fila['id_cliente']; ?>"><?php echo $fila['nombre'] ?> <?php echo $fila['apellido']; ?></option>
                     <?php }; ?>
                 </select>
             </div>
