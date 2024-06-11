@@ -21,7 +21,7 @@
 require 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id_usuario = $_POST['id_usuario'];
+    $id_cliente = $_POST['id_cliente'];
     $id_zapatilla = $_POST['id_zapatilla'];
     $cantidad = $_POST['cantidad'];
     $fecha_venta = $_POST['fecha_venta'];
@@ -56,9 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if ($stmt->execute()) {
                 // Registrar la venta
-                $sql = "INSERT INTO ventas (id_usuario, id_zapatilla, cantidad, fecha_venta) VALUES (?, ?, ?, ?)";
+                $sql = "INSERT INTO ventas (id_cliente, id_zapatilla, cantidad, fecha_venta) VALUES (?, ?, ?, ?)";
                 $stmt = $mysqli->prepare($sql);
-                $stmt->bind_param("iiis", $id_usuario, $id_zapatilla, $cantidad, $fecha_venta);
+                $stmt->bind_param("iiis", $id_cliente, $id_zapatilla, $cantidad, $fecha_venta);
 
                 if ($stmt->execute()) {
                     echo "<div class='container mt-4'>

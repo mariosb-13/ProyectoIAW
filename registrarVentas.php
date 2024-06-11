@@ -20,9 +20,9 @@
 <body>
     <?php
     require 'conexion.php';
-    // Obtener usuarios y zapatillas para el formulario
-    $sql_usuarios = "SELECT id_usuario, nombre FROM usuarios";
-    $resultado_usuarios = $mysqli->query($sql_usuarios);
+    // Obtener clientes y zapatillas para el formulario
+    $sql_clientes = "SELECT id_cliente, nombre FROM clientes";
+    $resultado_clientes = $mysqli->query($sql_clientes);
 
     $sql_zapatillas = "SELECT id_zapatilla, marca, modelo, stock FROM zapatillas";
     $resultado_zapatillas = $mysqli->query($sql_zapatillas);
@@ -39,10 +39,10 @@
     <div class="container">
         <form action="registrarVentas2.php" method="post">
             <div class="form-group">
-                <label for="id_usuario">Usuario:</label>
-                <select name="id_usuario" id="id_usuario" class="form-control" required>
-                    <?php while ($fila = $resultado_usuarios->fetch_assoc()) { ?>
-                        <option value="<?php echo $fila['id_usuario']; ?>"><?php echo $fila['nombre']; ?></option>
+                <label for="id_cliente">Cliente:</label>
+                <select name="id_cliente" id="id_cliente" class="form-control" required>
+                    <?php while ($fila = $resultado_clientes->fetch_assoc()) { ?>
+                        <option value="<?php echo $fila['id_cliente']; ?>"><?php echo $fila['nombre']; ?></option>
                     <?php }; ?>
                 </select>
             </div>

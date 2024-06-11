@@ -19,9 +19,9 @@ $resultado = $sql->get_result();
 $fila = $resultado->fetch_assoc();
 $admin = $fila['administrador'] == 'Si';
 
-$sql = "SELECT ventas.id_venta, usuarios.nombre, zapatillas.marca, zapatillas.modelo, ventas.cantidad, ventas.fecha_venta
+$sql = "SELECT ventas.id_venta, clientes.nombre, clientes.apellido, zapatillas.marca, zapatillas.modelo, ventas.cantidad, ventas.fecha_venta
         FROM ventas
-        JOIN usuarios ON ventas.id_usuario = usuarios.id_usuario
+        JOIN clientes ON ventas.id_cliente = clientes.id_cliente
         JOIN zapatillas ON ventas.id_zapatilla = zapatillas.id_zapatilla";
 $resultado = $mysqli->query($sql);
 ?>
@@ -71,7 +71,8 @@ $resultado = $mysqli->query($sql);
             <thead>
                 <tr>
                     <th>ID Venta</th>
-                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Cantidad</th>
@@ -88,6 +89,7 @@ $resultado = $mysqli->query($sql);
                     echo "<tr>";
                     echo "<td>{$fila['id_venta']}</td>";
                     echo "<td>{$fila['nombre']}</td>";
+                    echo "<td>{$fila['apellido']}</td>";
                     echo "<td>{$fila['marca']}</td>";
                     echo "<td>{$fila['modelo']}</td>";
                     echo "<td>{$fila['cantidad']}</td>";
