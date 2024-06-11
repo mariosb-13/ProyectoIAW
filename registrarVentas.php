@@ -50,7 +50,7 @@
                 <label for="id_zapatilla">Zapatilla:</label>
                 <select name="id_zapatilla" id="id_zapatilla" class="form-control" required>
                     <?php while ($fila = $resultado_zapatillas->fetch_assoc()) { ?>
-                        <option value="<?php echo $fila['id_zapatilla']; ?>"><?php echo $fila['marca'] . " " . $fila['modelo']; ?> (Stock: <?php echo $fila['stock']; ?>)</option>
+                        <option value="<?php echo $fila['id_zapatilla']; ?>"><?php echo $fila['marca'] ?> <?php echo $fila['modelo']; ?> (Stock: <?php echo $fila['stock']; ?>)</option>
                     <?php }; ?>
                 </select>
             </div>

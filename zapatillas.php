@@ -80,8 +80,6 @@ $resultado = $mysqli->query($sql);
                     <tbody>
                         <?php
                         while ($fila = $resultado->fetch_assoc()) {
-                            $stockClass = $fila['Stock'] == 0 ? 'nostock' : '';
-                            echo "<tr class='$stockClass'>";
                             echo "<td>{$fila['Marca']}</td>";
                             echo "<td>{$fila['Modelo']}</td>";
                             echo "<td>{$fila['Stock']} ud.</td>";
