@@ -57,6 +57,7 @@ if (isset($_SESSION['usuario'])) {
             <p class="lead">Puede acceder a ver la base de datos ⬇</p>
             <a class="btn btn-primary btn-lg" href="zapatillas.php" role="button">Ver Zapatillas</a>
             <a class="btn btn-primary btn-lg" href="usuarios.php" role="button">Ver Usuarios</a>
+            <a class="btn btn-primary btn-lg" href="ventas.php" role="button">Ver Ventas</a>
         <?php } ?>
         </p>
         <p class="lead">

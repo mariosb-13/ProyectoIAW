@@ -77,10 +77,8 @@ $resultado = $mysqli->query($sql);
                     <th>Modelo</th>
                     <th>Cantidad</th>
                     <th>Fecha de Venta</th>
-                    <?php if ($admin) { ?>
                         <th></th>
                         <th></th>
-                    <?php } ?>
                 </tr>
             </thead>
             <tbody>
@@ -94,10 +92,8 @@ $resultado = $mysqli->query($sql);
                     echo "<td>{$fila['modelo']}</td>";
                     echo "<td>{$fila['cantidad']}</td>";
                     echo "<td>{$fila['fecha_venta']}</td>";
-                    if ($admin) {
                         echo "<td><a href='editarVenta.php?id={$fila['id_venta']}' class='btn btn-warning btn-sm'><i class='bi bi-pencil-square'></i> Editar</a></td>";
                         echo "<td><a href='eliminarVentas.php?id={$fila['id_venta']}' class='btn btn-danger btn-sm'><i class='bi bi-trash-fill'></i> Eliminar</a></td>";
-                    }
                     echo "</tr>";
                 }
                 $mysqli->close();
