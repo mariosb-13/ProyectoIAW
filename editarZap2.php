@@ -26,42 +26,53 @@ $fila = $resultado->fetch_assoc();
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
 
-    <title>Snkrs.Pro - Editar Usuario</title>
+    <title>Snkrs.Pro - Editar Zapatilla</title>
 </head>
 
 <body>
-    <?php
-    require 'conexion.php';
+    <div class="container mt-4">
+        <?php
+        require 'conexion.php';
 
-    $marca = $_POST['marca'];
-    $modelo = $_POST['modelo'];
-    $stock = $_POST['stock'];
-    $precio = $_POST['precio'];
+        $marca = $_POST['marca'];
+        $modelo = $_POST['modelo'];
+        $stock = $_POST['stock'];
+        $precio = $_POST['precio'];
 
-    // Verificar que el stock no sea menor que 0
-    if ($stock < 0) {
-        echo "<div class='alert alert-danger' role='alert'>El stock no puede ser menor que 0</div>";
-        echo "<a href='zapatillas.php'><button type='button' class='btn btn-primary'>Regresar</button></a>";
-        exit(); // Terminar el script
-    }
+        // Verificar que el stock no sea menor que 0
+        if ($stock < 0) {
+            echo "<div class='alert alert-warning text-center' role='alert'>
+                <strong>Error:</strong> El stock no puede ser menor que 0.
+                <br><a href='zapatillas.php' class='btn btn-warning mt-2'>Regresar</a>
+            </div>";
+            exit(); // Terminar el script
+        }
 
-	if ($precio < 0) {
-		echo "<div class='alert alert-danger' role='alert'>El precio no puede ser menor que 0</div>";
-		echo "<a href='zapatillas.php'><button type='button' class='btn btn-primary'>Regresar</button></a>";
-		exit();
-	}
+        // Verificar que el precio no sea menor que 0
+        if ($precio < 0) {
+            echo "<div class='alert alert-warning text-center' role='alert'>
+                <strong>Error:</strong> El precio no puede ser menor que 0.
+                <br><a href='zapatillas.php' class='btn btn-warning mt-2'>Regresar</a>
+            </div>";
+            exit();
+        }
 
-    $sql = "UPDATE zapatillas SET Marca='$marca', Modelo='$modelo' , Stock='$stock', Precio='$precio' WHERE id_zapatilla='$id'";
+        $sql = "UPDATE zapatillas SET Marca='$marca', Modelo='$modelo' , Stock='$stock', Precio='$precio' WHERE id_zapatilla='$id'";
+        $resultado = $mysqli->query($sql);
 
-    $resultado = $mysqli->query($sql);
-
-    if ($resultado > 0) {
-        echo "<div class='alert alert-primary' role='alert'> Zapatilla modificada </div>";
-    } else {
-        echo "<div class='alert alert-danger' role='alert'> Ha habido un error al modificar la zapatilla </div>";
-    }
-    echo "<a href='zapatillas.php'><button type='button' class='btn btn-primary'>Regresar</button></a>";
-    ?>
+        if ($resultado > 0) {
+            echo "<div class='alert alert-success text-center' role='alert'>
+                <strong>Éxito:</strong> La zapatilla ha sido modificada correctamente.
+                <br><a href='zapatillas.php' class='btn btn-success mt-2'>Ver zapatillas</a>
+            </div>";
+        } else {
+            echo "<div class='alert alert-danger text-center' role='alert'>
+                <strong>Error:</strong> Ha habido un error al modificar la zapatilla.
+                <br><a href='zapatillas.php' class='btn btn-danger mt-2'>Regresar</a>
+            </div>";
+        }
+        ?>
+    </div>
 </body>
 
 </html>

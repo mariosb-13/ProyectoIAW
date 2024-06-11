@@ -30,26 +30,30 @@ $fila = $resultado->fetch_assoc();
 </head>
 
 <body>
-	<?php
+	<div class="container mt-4">
+		<?php
+		require 'conexion.php';
 
-	require 'conexion.php';
+		$nombre = $_POST['nombre'];
+		$usuario = $_POST['usuario'];
+		$admin = $_POST['administrador'];
 
-	$nombre = $_POST['nombre'];
-	$usuario = $_POST['usuario'];
-	$admin = $_POST['administrador'];
+		$sql = "UPDATE usuarios SET Nombre='$nombre', usuario='$usuario', administrador='$admin' WHERE id_usuario='$id'";
+		$resultado = $mysqli->query($sql);
 
-	$sql = "UPDATE usuarios SET Nombre='$nombre', usuario='$usuario' , administrador='$admin' WHERE id_usuario='$id'";
-
-
-	$resultado = $mysqli->query($sql);
-
-	if ($resultado > 0) {
-		echo "<div class='alert alert-primary' role='alert'> Usuario modificado </div>";
-	} else {
-		echo "<div class='alert alert-danger' role='alert'> Ha habido un error al modificar el usuario </div>";
-	}
-	echo "<a href=usuarios.php><button type='button' class='btn btn-primary'>Regresar</button></a>";
-	?>
+		if ($resultado > 0) {
+			echo "<div class='alert alert-success text-center' role='alert'>
+				<strong>Éxito:</strong> El usuario ha sido modificado correctamente.
+				<br><a href='usuarios.php' class='btn btn-success mt-2'>Ver usuarios</a>
+			</div>";
+		} else {
+			echo "<div class='alert alert-danger text-center' role='alert'>
+				<strong>Error:</strong> Ha habido un error al modificar el usuario.
+				<br><a href='usuarios.php' class='btn btn-danger mt-2'>Regresar</a>
+			</div>";
+		}
+		?>
+	</div>
 </body>
 
 </html>

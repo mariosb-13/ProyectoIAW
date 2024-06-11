@@ -18,68 +18,80 @@
 </head>
 
 <body>
-	<?php
-	require 'conexion.php';
+	<div class="container mt-4">
+		<?php
+		require 'conexion.php';
 
-	session_start();
+		session_start();
 
-	if (!isset($_SESSION['usuario'])) {
-		// Si el usuario no ha iniciado sesión, redirigirlo al formulario de inicio de sesión
-		header("Location: login.php");
-		exit();
-	}
-
-	$usuario = $_SESSION['usuario'];
-
-	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$Modelo = $_POST['modelo'];
-		$Marca = $_POST['marca'];
-		$Stock = $_POST['stock'];
-		$Precio = $_POST['precio'];
-
-		// Verificar que el stock no sea menor que 0
-		if ($Stock < 0) {
-			echo "<div class='alert alert-danger' role='alert'>El stock no puede ser menor que 0</div>";
-			echo "<a href='registrarZapatillas.php'><button type='button' class='btn btn-primary'>Regresar</button></a>";
+		if (!isset($_SESSION['usuario'])) {
+			// Si el usuario no ha iniciado sesión, redirigirlo al formulario de inicio de sesión
+			header("Location: login.php");
 			exit();
 		}
 
-		// Verificar que el precio no sea menor que 0
-		if ($Precio < 0) {
-			echo "<div class='alert alert-danger' role='alert'>El precio no puede ser menor que 0</div>";
-			echo "<a href='registrarZapatillas.php'><button type='button' class='btn btn-primary'>Regresar</button></a>";
-			exit();
+		$usuario = $_SESSION['usuario'];
+
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$Modelo = $_POST['modelo'];
+			$Marca = $_POST['marca'];
+			$Stock = $_POST['stock'];
+			$Precio = $_POST['precio'];
+
+			// Verificar que el stock no sea menor que 0
+			if ($Stock < 0) {
+				echo "<div class='alert alert-warning text-center' role='alert'>
+					<strong>Error:</strong> El stock no puede ser menor que 0.
+					<br><a href='registrarZap.php' class='btn btn-warning mt-2'>Regresar</a>
+				</div>";
+				exit();
+			}
+
+			// Verificar que el precio no sea menor que 0
+			if ($Precio < 0) {
+				echo "<div class='alert alert-warning text-center' role='alert'>
+					<strong>Error:</strong> El precio no puede ser menor que 0.
+					<br><a href='registrarZap.php' class='btn btn-warning mt-2'>Regresar</a>
+				</div>";
+				exit();
+			}
+
+			// Verificar si ya existe una zapatilla con el mismo modelo y marca
+			$sql = "SELECT * FROM zapatillas WHERE Modelo = ? AND Marca = ?";
+			$stmt = $mysqli->prepare($sql);
+			$stmt->bind_param("ss", $Modelo, $Marca);
+			$stmt->execute();
+			$resultado = $stmt->get_result();
+
+			if ($resultado->num_rows > 0) {
+				echo "<div class='alert alert-danger text-center' role='alert'>
+					<strong>Error:</strong> Ya existe una zapatilla con el mismo modelo y marca.
+					<br><a href='registrarZap.php' class='btn btn-danger mt-2'>Regresar</a>
+				</div>";
+				exit();
+			}
+
+			// Si no existe, insertar la nueva zapatilla
+			$sql = "INSERT INTO zapatillas (Modelo, Marca, Stock, Precio) VALUES (?, ?, ?, ?)";
+			$stmt = $mysqli->prepare($sql);
+			$stmt->bind_param("ssii", $Modelo, $Marca, $Stock, $Precio);
+
+			if ($stmt->execute()) {
+				echo "<div class='alert alert-success text-center' role='alert'>
+					<strong>Éxito:</strong> La zapatilla ha sido agregada correctamente.
+					<br><a href='zapatillas.php' class='btn btn-success mt-2'>Ver zapatillas</a>
+				</div>";
+			} else {
+				echo "<div class='alert alert-danger text-center' role='alert'>
+					<strong>Error:</strong> Ha habido un error al agregar la zapatilla.
+					<br><a href='registrarZap.php' class='btn btn-success mt-2'>Regresar</a>
+				</div>";
+			}
 		}
 
-		// Verificar si ya existe una zapatilla con el mismo modelo y marca
-		$sql = "SELECT * FROM zapatillas WHERE Modelo = ? AND Marca = ?";
-		$stmt = $mysqli->prepare($sql);
-		$stmt->bind_param("ss", $Modelo, $Marca);
-		$stmt->execute();
-		$resultado = $stmt->get_result();
-
-		if ($resultado->num_rows > 0) {
-			echo "<div class='alert alert-danger' role='alert'>Ya existe una zapatilla con el mismo modelo y marca</div>";
-			echo "<a href='registrarZap.php'><button type='button' class='btn btn-primary'>Regresar</button></a>";
-			exit();
-		}
-
-		// Si no existe, insertar la nueva zapatilla
-		$sql = "INSERT INTO zapatillas (Modelo, Marca, Stock, Precio) VALUES (?, ?, ?, ?)";
-		$stmt = $mysqli->prepare($sql);
-		$stmt->bind_param("ssii", $Modelo, $Marca, $Stock, $Precio);
-
-		if ($stmt->execute()) {
-			echo "<div class='alert alert-primary' role='alert'>Zapatilla agregada</div>";
-		} else {
-			echo "<div class='alert alert-danger' role='alert'>Ha habido un error al agregar la zapatilla</div>";
-		}
-		echo "<a href='zapatillas.php'><button type='button' class='btn btn-primary'>Regresar</button></a>";
-	}
-
-	$mysqli->close();
-	?>
-
+		$mysqli->close();
+		?>
+	</div>
 </body>
 
 </html>

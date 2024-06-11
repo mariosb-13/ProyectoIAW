@@ -42,7 +42,7 @@ if (isset($_SESSION['usuario'])) {
     <div class="jumbotron">
         <!-- Filtramos si hay un usuario logeado -->
         <?php if (isset($usuario)) { ?>
-            <h1 class="display-3">Bienvenido <?php echo $usuario; ?>!</h1>
+            <h1 class="display-3">Bienvenido/a <?php echo $usuario; ?>!</h1>
             <hr class="my-2">
             <p class="lead">
                 <!-- Filtramos si ese usuario es administrador -->
@@ -64,7 +64,7 @@ if (isset($_SESSION['usuario'])) {
         </p>
     <?php } else { ?>
         <!-- Aquí si no hay ningun usuario logeado en la pagina -->
-        <h1 class="display-3">Hola, bienvenido a Snkrs.Pro</h1>
+        <h1 class="display-3">Hola, bienvenido/a a Snkrs.Pro</h1>
         <p class="lead">Esta es la página de administración de la base de datos de nuestra tienda.</p>
         <hr class="my-2">
         <p class="lead">Deberá registrarse o iniciar sesión para poder acceder</p>
