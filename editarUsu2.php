@@ -1,5 +1,4 @@
 <?php
-require 'conexion.php';
 
 $id = $_POST['id'];
 

@@ -45,7 +45,6 @@ $fila = $resultado->fetch_assoc();
                 <strong>Error:</strong> El stock no puede ser menor que 0.
                 <br><a href='zapatillas.php' class='btn btn-warning mt-2'>Regresar</a>
             </div>";
-            exit(); // Terminar el script
         }
 
         // Verificar que el precio no sea menor que 0
@@ -54,7 +53,6 @@ $fila = $resultado->fetch_assoc();
                 <strong>Error:</strong> El precio no puede ser menor que 0.
                 <br><a href='zapatillas.php' class='btn btn-warning mt-2'>Regresar</a>
             </div>";
-            exit();
         }
 
         $sql = "UPDATE zapatillas SET Marca='$marca', Modelo='$modelo' , Stock='$stock', Precio='$precio' WHERE id_zapatilla='$id'";
