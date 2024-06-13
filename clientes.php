@@ -11,13 +11,7 @@ if (!isset($_SESSION['usuario'])) {
 
 $usuario = $_SESSION['usuario'];
 
-// Obtener si el usuario es admin
-$sql = $mysqli->prepare("SELECT administrador FROM usuarios WHERE usuario = ?");
-$sql->bind_param("s", $usuario);
-$sql->execute();
-$resultado = $sql->get_result();
-$fila = $resultado->fetch_assoc();
-$admin = $fila['administrador'] == 'Si';
+
 
 $sql = "SELECT * FROM clientes";
 $resultado = $mysqli->query($sql);
@@ -73,11 +67,8 @@ $resultado = $mysqli->query($sql);
                             <th>Email</th>
                             <th>Telefono</th>
                             <th>Ciudad</th>
-                            <th>Email</th>
-                            <?php if ($admin) { ?>
                                 <th></th>
                                 <th></th>
-                            <?php } ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -89,10 +80,8 @@ $resultado = $mysqli->query($sql);
                             echo "<td>{$fila['Email']}</td>";
                             echo "<td>{$fila['Telefono']}</td>";
                             echo "<td>{$fila['Ciudad']}</td>";
-                            if ($admin) {
                                 echo "<td><a href='editarCliente.php?id={$fila['id_cliente']}' class='btn btn-warning btn-sm'><i class='bi bi-pencil-square'></i> Editar</a></td>";
                                 echo "<td><a href='eliminarCliente.php?id={$fila['id_cliente']}' class='btn btn-danger btn-sm'><i class='bi bi-trash-fill'></i> Eliminar</a></td>";
-                            }
                             echo "</tr>";
                         }
                         $mysqli->close();
