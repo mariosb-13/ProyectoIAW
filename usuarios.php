@@ -60,7 +60,7 @@ $resultado = $mysqli->query($sql);
                     </th>
                     <th>
                         <h1 class="display-3">Hola, <?php echo $usuario ?></h1>
-                        <p class="lead">Aquí puedes administrar todos los usuarios registrados en nuestra base de datos.</p>
+                        <p class="lead">Aquí puedes administrar todos los usuarios capaces de entrar en nuestra base de datos.</p>
                         <a href="index.php"><button type="button" class="btn btn-outline-primary">Volver</button></a>
                     </th>
                 </tr>

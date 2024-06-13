@@ -48,7 +48,7 @@ $resultado = $mysqli->query($sql);
             <div class="col-lg-8 mx-auto text-center">
                 <img class="img" src="images/icono.png">
                 <h1 class="display-4 mb-4">Nuestros Clientes.</h1>
-                <p class="lead mb-4">Descubre nuestra colección de zapatillas exclusivas.</p>
+                <p class="lead mb-4">Aquí están los datos de los clientes.</p>
                 <a href="index.php" class="btn btn-primary btn-lg">Volver</a>
             </div>
         </div>
